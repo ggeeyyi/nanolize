@@ -75,6 +75,7 @@ button{font:inherit;color:inherit}
 .cmp .row{display:grid;grid-template-columns:4.4em minmax(0,1fr) 7.8em 9.6em;align-items:center;gap:10px;white-space:nowrap}
 .cmp .bar{display:block;height:5px;border-radius:99px}
 .cmp .bar i{display:block;height:100%;width:100%;border-radius:99px;background:var(--mute)}
+.cmp .nano .bar{background:rgba(var(--hi),.07)}
 .cmp .nano .bar i{width:47.4%;background:var(--green-f)}
 .cmp b{font-weight:500;color:var(--ink);transition:color .35s}
 .cmp .nano .k{color:var(--green)}
@@ -306,7 +307,7 @@ button{font:inherit;color:inherit}
       <h1 class="grad"><span>Half the tokens.</span> <span>All the behavior.</span></h1>
       <p class="sub">Nanolize rewrites a bloated repository from scratch into a nano one that coding agents read, change and run for fewer tokens.</p>
       <p class="cta"><a class="btn go" href="#">Read the paper</a><a class="btn gh" href="#">Get the code</a></p>
-      <div class="stage" id="stage" role="img" aria-label="Animation: a wall of complicated code turns into a sky of stars joined by a tangle of lines, the same code drawn as a graph. Then the sky is simplified to a subgraph: the stars and lines that stay, standing for 36,458 of Detectron2's 76,888 lines, light up green as a spiral galaxy, a small core and two arms winding out of it with a knot of stars at every package, the rest fade, 382 checks run out along the arms and the subgraph flashes. Stars and lines near the pointer brighten.">
+      <div class="stage" id="stage" role="img" aria-label="Animation: a wall of complicated code turns into a sky of stars joined by a tangle of lines, the same code drawn as a graph. The stars fill the space of the scene, which is seen from low down and turns slowly. Then the sky is simplified to a subgraph: the stars and lines that stay, standing for 36,458 of Detectron2's 76,888 lines, light up green as a spiral galaxy, a small core and two arms winding out of it and leaning out of its level, with a knot of stars at every package, the rest fade, 382 checks run out along the arms and the subgraph flashes. Stars and lines near the pointer brighten.">
         <div class="cmp m" id="cmp">
           <span class="ph" id="orb-phase">delivered</span>
           <div class="row"><span class="k">original</span><span class="bar"><i></i></span><span><b class="num">76,888</b> lines</span><span class="c">382 checks frozen</span></div>
@@ -548,6 +549,9 @@ button{font:inherit;color:inherit}
      stars and lines that stay light up green, the rest are blown away to a trace. What stays is a spiral galaxy:
      a small core and two arms winding out of it, each arm a bright spine with a fine mesh on either side. It was
      in the sky all along, hidden in the tangle. Once something is a star of the subgraph it does not move.
+     The sky is a space, not a sheet. The stars fill the whole scene, above the galaxy, below it and out past its
+     rim; the scene is seen from low down, in perspective, and turns slowly, so near stars pass in front of far
+     ones. The galaxy has depth too: its two arms lean out of the level, each its own way.
      The share of stars that stays is the real ratio for Detectron2, 36,458 of 76,888 lines. The graph itself is
      illustrative and the code shown is a made-up example; the labels are Detectron2's public packages.
      The sky answers the pointer: stars and lines near it brighten and lean away, what was removed shows again
@@ -639,41 +643,46 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
     const rng = (a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; })(41);
     const d2 = (p, q) => (p.x - q.x) ** 2 + (p.y - q.y) ** 2 + (p.z - q.z) ** 2;
 
-    /* The stars, in units of the disc's radius; the disc lies in the x-z plane. First the K that stay: a spiral
-       galaxy, orderly in the large and loose in the small.
-       The core: one star in the middle and 44 spread over a small flattened ball round it.
+    /* The stars, in units of the galaxy's radius; y is upright and the scene turns about it. First the K that
+       stay: a spiral galaxy, orderly in the large and loose in the small.
+       The core: one star in the middle and 44 spread over a small ball round it.
        The two arms: logarithmic spirals out of the core, one a full turn, the other shorter, neither quite true:
-       each spine wavers. Six stars on each spine are the packages, and each package has its own knot of stars,
-       some rich, some thin. A feather or two peels off each arm, and the remaining stars are strewn along the
-       arms, close to the spine more often than far from it.
-       Then the stars that go: scattered through the same disc, thicker than it, and over the whole first screen. */
+       each spine wavers. The arms do not share a plane: each lies in its own, tipped LEAN out of the level about
+       its own line (NODE), so one arm passes over the other and the galaxy has depth from every side. Six stars
+       on each spine are the packages, and each package has its own ball of stars, some rich, some thin. A feather
+       or two peels off each arm, and the remaining stars are strewn along the arms, beside them, above them and
+       below them (THICK), close to the spine more often than far from it.
+       Then the stars that go. Most of them (LOCAL) fill the space round the galaxy: a drum RIM wide and DEEP
+       above and below the level, thinner towards its edge, with more of them out towards the rim and away from
+       the level than in the galaxy's own thin middle. The rest are spread over the whole first screen. */
     const S = [], HUB = [], SPINE = [[], []], ARM = [[], []], PRE = [], NC = 44, R0 = .27, TURN = [1.03, .84], END = [1, .93], HW = .2;
+    const LEAN = [.11, .1], NODE = [.4, 2.7], THICK = .12, LOCAL = .72, RIM = 1.25, DEEP = .5;
     const bell = () => (rng() + rng() + rng()) / 1.5 - 1;                        // -1..1, mostly near 0
     const add = o => { S.push(o); return S.length - 1; };
     const clear = (x, y, z, ids, gap) => ids.every(j => (S[j].x - x) ** 2 + (S[j].y - y) ** 2 + (S[j].z - z) ** 2 > gap * gap);
     add({ x: 0, y: 0, z: 0, keep: true, hub: 0, ord: 0, chk: 0 }); HUB.push(0);
     for (let i = 0; i < NC; i++) { const yy = 1 - 2 * (i + .5) / NC, rr = Math.sqrt(1 - yy * yy), th = i * 2.39996, far = .13 + .06 * rng();
-      add({ x: far * rr * Math.cos(th), y: far * .52 * yy, z: far * rr * Math.sin(th), keep: true, core: true, ord: .03 + .04 * rng(), chk: .04 * rng() }); }
+      add({ x: far * rr * Math.cos(th), y: far * .82 * yy, z: far * rr * Math.sin(th), keep: true, core: true, ord: .03 + .04 * rng(), chk: .04 * rng() }); }
     const WAVE = [0, 1].map(() => [rng() * TAU, rng() * TAU]);
     const at = (a, u, v, y) => { const th = .5 + a * 3.4 + TURN[a] * TAU * u, r = R0 * Math.pow(END[a] / R0, u) * (1 + .055 * Math.sin(3.1 * th + WAVE[a][0]) + .024 * Math.sin(7.7 * th + WAVE[a][1])) * (1 + v);
-      return { x: r * Math.cos(th), y: .04 * r * Math.sin(th + 1) + y, z: r * Math.sin(th) }; };
+      return { x: r * Math.cos(th), y: LEAN[a] * r * Math.sin(th - NODE[a]) + y, z: r * Math.sin(th) }; };
     const even = (a, f) => Math.log(1 + f * (END[a] / R0 - 1)) / Math.log(END[a] / R0);             // equal steps along the arm, not equal angles
     for (let a = 0; a < 2; a++) { const sp = SPINE[a], ids = ARM[a], n = a ? 42 : 50, pace = a ? .82 : 1;
       for (let j = 0; j < n; j++) { const u = even(a, (j + .5) / n), i = add({ ...at(a, u, (rng() - .5) * .014, (rng() - .5) * .012), keep: true, arm: a, u, spine: true, ord: .1 + .86 * u * pace, chk: .05 + .95 * u * pace });
         if (j) PRE.push([sp[j - 1], i, 1]); sp.push(i); ids.push(i); }
       [.1, .27, .44, .61, .78, .95].forEach(f => { const h = sp[Math.round(clamp01(f + (rng() - .5) * .06) * (n - 1))], c = S[h], rad = (.05 + .055 * Math.hypot(c.x, c.z)) * (.75 + .6 * rng()), want = 5 + Math.floor(rng() * 9), mine = [];
         c.hub = HUB.length; c.rad = rad; HUB.push(h);
-        for (let tries = 0; mine.length < want && tries < 300; tries++) { const x = c.x + bell() * rad * 1.5, y = c.y + bell() * rad * .6, z = c.z + bell() * rad * 1.5; if (!clear(x, y, z, ids, .026 + .012 * Math.hypot(x, z))) continue;
+        for (let tries = 0; mine.length < want && tries < 300; tries++) { const x = c.x + bell() * rad * 1.5, y = c.y + bell() * rad * 1.15, z = c.z + bell() * rad * 1.5; if (!clear(x, y, z, ids, .026 + .012 * Math.hypot(x, z))) continue;
           const far = Math.hypot(x - c.x, y - c.y, z - c.z), i = add({ x, y, z, keep: true, arm: a, u: c.u, knot: true, far, ord: c.ord + .012 + .05 * far / (rad * 1.5), chk: c.chk + .012 }); mine.push(i); ids.push(i); }
         mine.sort((p, q) => S[p].far - S[q].far).forEach((i, n) => { const inner = mine.slice(0, n), to = n < 4 || rng() < .25 ? h : inner.reduce((best, j) => d2(S[i], S[j]) < d2(S[i], S[best]) ? j : best, inner[0]);
           PRE.push([to, i, 0]); if (n > 1 && rng() < .45) PRE.push([inner[Math.floor(rng() * n)], i, 0]); }); });
       [1, -1].forEach((dir, n) => { const j0 = Math.round((.3 + .34 * n + .12 * rng()) * (n ? n : 1) * (sp.length - 1) / (n ? n : 1)), c = S[sp[j0]], len = dir > 0 ? 5 + Math.floor(rng() * 3) : 3 + Math.floor(rng() * 2); let prev = sp[j0];   // feathers: one peels outward, a shorter one inward
         for (let q = 1; q <= len; q++) { const u = Math.min(1.04, c.u + q * .03), i = add({ ...at(a, u, dir * q * (.036 + .01 * rng()), bell() * .012), keep: true, arm: a, u, ord: c.ord + q * .02, chk: c.chk + q * .012 }); PRE.push([prev, i, 0]); prev = i; ids.push(i); } }); }
-    for (let a = 0, tries = 0; S.length < K && tries < 20000; a = 1 - a, tries++) { const u = even(a, rng()), wide = HW * (.45 + .75 * Math.sin(Math.PI * Math.pow(u, .8))), o = at(a, u, bell() * wide * 1.5, bell() * .04 * (1 - .4 * u));
+    for (let a = 0, tries = 0; S.length < K && tries < 20000; a = 1 - a, tries++) { const u = even(a, rng()), wide = HW * (.45 + .75 * Math.sin(Math.PI * Math.pow(u, .8))), o = at(a, u, bell() * wide * 1.5, bell() * THICK * (1 - .4 * u));
       if (!clear(o.x, o.y, o.z, ARM[a], .03 + .016 * Math.hypot(o.x, o.z))) continue; const pace = a ? .82 : 1; ARM[a].push(add({ ...o, keep: true, arm: a, u, loose: true, ord: .12 + .86 * u * pace, chk: .06 + .94 * u * pace })); }
-    const CL = K + Math.round((N - K) * .58);                                   // stars below this index sit in the disc
-    while (S.length < CL) { const ball = rng() < .16, r = ball ? .36 * Math.pow(rng(), .7) : 1.2 * Math.sqrt(rng()), th = rng() * TAU;
-      S.push({ x: r * Math.cos(th), y: bell() * (ball ? .2 : .25 * (1 - .45 * Math.min(1, r))), z: r * Math.sin(th) }); }
+    const CL = K + Math.round((N - K) * LOCAL);                                // stars below this index sit in or round the galaxy
+    while (S.length < CL) { const ball = rng() < .06, r = ball ? .4 * Math.pow(rng(), .7) : RIM * Math.pow(rng(), .45), th = rng() * TAU, v = rng() * 2 - 1;
+      S.push({ x: r * Math.cos(th), y: ball ? bell() * .26 : Math.sign(v) * Math.pow(Math.abs(v), .65) * DEEP * (1 - .3 * (r / RIM) ** 2), z: r * Math.sin(th) }); }
     while (S.length < N) { const r = Math.pow(rng(), .62), th = rng() * TAU; S.push({ wide: true, ux: r * Math.cos(th), uz: r * Math.sin(th), uy: rng() * 2 - 1 }); }
     S.forEach(p => { if (p.wide) { p.x = p.ux * 3.2; p.y = p.uy * 1.6; p.z = p.uz * 3.2; } });   // nominal place, only for finding neighbours
 
@@ -681,7 +690,8 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
        kind 0: everything else: the knots round the packages, the feathers, every loose star tied to its nearest
        one or two, and a few long ties from one arm across to the other). Each kept line runs from its earlier end
        to its later one, so the arms can be drawn outward. MESS is everything that goes: every star tied to a
-       neighbour or two, and long ties across the disc. The opening sky shows both, equally faint. */
+       neighbour or two, and longer ties through the space round the galaxy; out past the rim the ties are fewer and
+       shorter, so the far field reads as stars. The opening sky shows both, fainter the further away they are. */
     const KEPT = [], MESS = [], tied = new Set(), deg = new Uint8Array(N);
     const key = (i, j) => i < j ? i * N + j : j * N + i;
     const keep = (i, j, kind) => { if (i === j || tied.has(key(i, j))) return; tied.add(key(i, j)); if (S[i].ord > S[j].ord) { const t = i; i = j; j = t; } KEPT.push({ a: i, b: j, kind }); deg[i]++; deg[j]++; };
@@ -697,15 +707,15 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
     const tie = (i, j) => { if (i !== j && !tied.has(key(i, j))) { tied.add(key(i, j)); MESS.push({ i, j, off: Math.min(1, Math.max(S[i].ord, S[j].ord) * .8 + rng() * .2), spark: rng() < .22 }); } };
     S.forEach((p, i) => {
       p.mag = rng() < .04 ? 2.3 + rng() : .85 + rng() * .8; p.ph = rng() * TAU; p.sp = .5 + rng() * 1.3; p.tint = TINT[Math.floor(rng() * TINT.length)]; p.sw = (.5 + rng() * .8) * (rng() < .5 ? 1 : -.6);
-      p.rn = Math.min(1, Math.hypot(p.x, p.z));                                   // the flash passes outward
+      p.rxz = Math.hypot(p.x, p.z); p.rn = Math.min(1, p.rxz);                                   // the flash passes outward
       if (!p.keep) p.ord = p.wide ? .5 + .5 * rng() : clamp01(Math.log(Math.max(p.rn, R0) / R0) / Math.log(1 / R0) * .8 + rng() * .2);   // the sky clears outward, as the arms grow
     });
     S.forEach((p, i) => { const [a, da, b, db] = near2[i];
       if (p.keep) { if (rng() < .5) tie(i, a); if (db < .02 && rng() < .3) tie(i, b); }
-      else { if (da < .03) tie(i, a); if (db < .03 && rng() < .5) tie(i, b); }
-      if (!p.wide && rng() < (p.keep ? .55 : .9)) { const j = Math.floor(rng() * CL); if (d2(p, S[j]) < .5) tie(i, j); } });
+      else { const nn = p.rxz > 1 ? .045 : .08; if (da < nn) tie(i, a); if (db < nn && rng() < .6) tie(i, b); }
+      if (!p.wide) for (let n = p.keep ? 1 : 5; n--;) if (rng() < (p.keep ? .55 : p.rxz > 1 ? .3 : .7)) { const j = Math.floor(rng() * CL); if (d2(p, S[j]) < (p.keep ? .5 : .16)) tie(i, j); } });
     const SPK = [...Array(K).keys()].filter(i => i % 29 === 7 && !(S[i].hub >= 0));                 // the stars that sparkle at the finish
-    /* Every disc star starts as one character of the code; the code lets go of them from its middle outward. */
+    /* Every star in or round the galaxy starts as one character of the code; the code lets go of them from its middle outward. */
     const SHIFT = 40, CELLS = [];                                              // the second column starts this many lines further on
     for (const side of [0, 1]) for (let r = 1; r < 26; r++) { const text = CODE[(r + side * SHIFT) % CODE.length]; for (let c = 0; c < Math.min(text.length, 62); c++) if (text[c] !== ' ') CELLS.push([r, c, text[c], side]); }
     for (let i = 0; i < CL; i++) { const cell = CELLS[Math.floor(rng() * CELLS.length)], p = S[i]; p.row = cell[0]; p.col = cell[1]; p.ch = cell[2]; p.side = cell[3];
@@ -716,7 +726,7 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
     const GW = sprite('230,236,255'), GG = sprite(NV), GL = sprite('226,255,170');
 
     const SX = new Float32Array(N), SY = new Float32Array(N), SQ = new Float32Array(N), SD = new Float32Array(N), SN = new Float32Array(N), LIT = new Float32Array(N), SW = new Float32Array(N), SA = new Float32Array(N), TX = new Float32Array(N), TY = new Float32Array(N), LA = new Float32Array(HUB.length);
-    const BK = Array.from({ length: 18 }, () => []);                            // lit links by kind and depth, one stroke each
+    const BK = Array.from({ length: 18 }, () => []), TB = Array.from({ length: 5 }, () => []);                            // lit links by kind and depth, one stroke each
     const hud = { lines: $('#orb-lines'), checks: $('#orb-checks'), phase: $('#orb-phase'), bar: $('#orb-bar'), box: $('#cmp') };
     const PHASE = ['the original code', 'the same code, as a graph', 'rewriting from scratch', 'running the frozen checks', 'delivered'];
     let W = 0, H = 0, dpr = 1, cx = 0, cy = 0, R = 1, UN = 1, RW = 1, F = 1000, tilt0 = .46, shown = -1, spin = .6, yaw = 0, pitch = 0, tyaw = 0, tpitch = 0, clock = 0;
@@ -726,16 +736,21 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
       const r = hero.getBoundingClientRect(), s = stage.getBoundingClientRect(), tall = s.height - hud.box.offsetHeight - 12;   // the readout sits at the bottom of the stage
       W = r.width; H = r.height; cx = s.left - r.left + s.width / 2;
       sx0 = s.left - r.left; sx1 = sx0 + s.width; sy0 = s.top - r.top; sy1 = sy0 + tall;
-      /* The disc is as wide as the stage allows and tipped just enough to fill its height: nearly edge-on on a
-         wide screen, seen from well above on a phone. Its far rim sits at the top of the stage, its near rim at the bottom. */
-      RW = Math.max(cx, W - cx) * 1.12; R = Math.min(s.width * .5, 480); tilt0 = Math.min(1, Math.max(.46, Math.asin(Math.min(.84, tall * .5 / (R * 1.06)))));
-      const room = tall + (W < 600 ? 0 : 30); let up = 0, dn = 0;                    // on a wide screen the far rim may rise a little behind the buttons
-      for (let n = 0; n < 6; n++) { F = Math.max(1000, RW * 1.5, R * 3.2); const sb = Math.sin(tilt0), cb = Math.cos(tilt0); up = R * 1.08 * sb * F / (F + R * cb); dn = R * 1.2 * sb * F / (F - R * cb) + 16; if (up + dn > room - 12) R *= (room - 12) / (up + dn); else break; }
+      /* The galaxy is as wide as the stage allows and is seen from low down: about 17 degrees above its level on
+         a wide screen, up to 34 on a phone, where the stage is nearly square. Once a turn each star that stays
+         swings nearest the eye, where it stands lowest on the screen, and once farthest, where it stands highest;
+         the galaxy is sized so that the lowest and the highest of them, with room for the names, stay inside the stage. */
+      RW = Math.max(cx, W - cx) * 1.12; R = Math.min(s.width * .5, 540); tilt0 = Math.min(.6, Math.max(.3, Math.asin(Math.min(.84, tall * .38 / (R * 1.06)))));
+      const room = tall + (W < 600 ? 0 : 30), sb = Math.sin(tilt0), cb = Math.cos(tilt0); let up = 0, dn = 0;                    // on a wide screen the far rim may rise a little behind the buttons
+      for (let n = 0; n < 6; n++) { F = Math.max(760, R * 3); up = dn = 0;
+        for (let i = 0; i < K; i++) { const p = S[i], r = p.rxz * R, y = p.y * R; up = Math.max(up, (r * sb - y * cb) * F / (F + r * cb + y * sb)); dn = Math.max(dn, (r * sb + y * cb) * F / (F - r * cb + y * sb)); }
+        up = up * 1.04 + 6; dn = dn * 1.08 + 24; if (up + dn > room - 12) R *= (room - 12) / (up + dn); else break; }
       cy = sy1 - 6 - dn - (room - 12 - up - dn) / 2; UN = Math.min(1.1, Math.max(.5, R / 440));
       dpr = Math.min(2, window.devicePixelRatio || 1, Math.sqrt(4.6e6 / (W * H)));
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       fs = W < 600 ? 8.5 : 10.5; lh = fs * 1.36; ctx.font = `${fs}px "Geist Mono",ui-monospace,monospace`; cw = ctx.measureText('0000000000').width / 10;
-      for (const p of S) if (p.wide) { p.px = p.ux * RW; p.pz = p.uz * RW; p.py = lerp(-cy * 1.04, (H - cy) * 1.04, (p.uy + 1) / 2); } else { p.px = p.x * R; p.py = p.y * R; p.pz = p.z * R; }
+      const out = Math.max(RIM * R, s.width * .56) - R;                              // past the rim, the stars that go are spread as far as the sides of the stage
+      for (const p of S) if (p.wide) { p.px = p.ux * RW; p.pz = p.uz * RW; p.py = lerp(-cy * 1.04, (H - cy) * 1.04, (p.uy + 1) / 2); } else { const k = p.keep || p.rxz <= 1 ? R : (R + (p.rxz - 1) / (RIM - 1) * out) / p.rxz; p.px = p.x * k; p.py = p.y * R; p.pz = p.z * k; }
     };
     const dot = (x, y, r) => { ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); };
     const line = (x1, y1, x2, y2) => { ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); };
@@ -786,13 +801,14 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
       ctx.globalCompositeOperation = 'source-over';
       if (wake > .02) { const g = ctx.createRadialGradient(px, py, 0, px, py, reach * 1.5); g.addColorStop(0, `rgba(${WHITE},${.07 * wake})`); g.addColorStop(1, `rgba(${WHITE},0)`); ctx.fillStyle = g; ctx.fillRect(px - reach * 1.5, py - reach * 1.5, reach * 3, reach * 3); }
       ctx.lineCap = 'round'; ctx.lineWidth = 1;
-      /* the tangle: untouched lines in one stroke; a line being removed pulls back from its middle; near the pointer
-         lines brighten, and the ones already removed show again */
+      /* the tangle: untouched lines in five strokes by depth, the far ones fainter; a line being removed pulls back
+         from its middle; near the pointer lines brighten, and the ones already removed show again */
       if (web > 0) {
-        ctx.strokeStyle = `rgba(${WHITE},${.17 * web})`; ctx.beginPath(); const busy = [];
-        for (const e of MESS) { if (SN[e.i] * SN[e.j] < .05) continue; const d = clamp01((raw - e.off * .82) / .18), w = (SW[e.i] + SW[e.j]) / 2; if (d > 0 || w > .03) { if (d < 1 || w > .03) busy.push(e, d, w); continue; } ctx.moveTo(SX[e.i], SY[e.i]); ctx.lineTo(SX[e.j], SY[e.j]); }
-        for (const e of KEPT) { if (LIT[e.b] <= 0 && SW[e.a] + SW[e.b] < .06) { ctx.moveTo(SX[e.a], SY[e.a]); ctx.lineTo(SX[e.b], SY[e.b]); } }
-        ctx.stroke();
+        const busy = []; for (const tb of TB) tb.length = 0;
+        for (const e of MESS) { const nr = SN[e.i] * SN[e.j]; if (nr < .05) continue; const d = clamp01((raw - e.off * .82) / .18), w = (SW[e.i] + SW[e.j]) / 2; if (d > 0 || w > .03) { if (d < 1 || w > .03) busy.push(e, d, w); continue; }
+          TB[Math.min(4, Math.floor((SD[e.i] + SD[e.j]) * 2.5 * Math.min(1, nr * 2)))].push(SX[e.i], SY[e.i], SX[e.j], SY[e.j]); }
+        for (const e of KEPT) { if (LIT[e.b] <= 0 && SW[e.a] + SW[e.b] < .06) TB[Math.min(4, Math.floor((SD[e.a] + SD[e.b]) * 2.5))].push(SX[e.a], SY[e.a], SX[e.b], SY[e.b]); }
+        TB.forEach((tb, n) => { if (!tb.length) return; ctx.strokeStyle = `rgba(${WHITE},${(.045 + .04 * n) * web})`; ctx.beginPath(); for (let q = 0; q < tb.length; q += 4) { ctx.moveTo(tb[q], tb[q + 1]); ctx.lineTo(tb[q + 2], tb[q + 3]); } ctx.stroke(); });
         for (let n = 0; n < busy.length; n += 3) { const e = busy[n], d = busy[n + 1], w = busy[n + 2], x1 = SX[e.i], y1 = SY[e.i], x2 = SX[e.j], y2 = SY[e.j];
           if (d >= 1) { ctx.strokeStyle = `rgba(${WHITE},${.3 * w})`; line(x1, y1, x2, y2); continue; }
           const h = .5 * (1 - d); ctx.strokeStyle = `rgba(${WHITE},${(.15 + .3 * w + (d > 0 && d < .5 ? .3 * (1 - d) : 0)) * web})`;
@@ -827,7 +843,7 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
         if (go < 1 && i < CL) { const hot = Math.sin(Math.PI * go); ctx.strokeStyle = `rgba(${WHITE},${.4 * hot})`; ctx.lineWidth = 1; line(TX[i], TY[i], x, y);                 // in flight: a streak behind it
           if (born < 1) { ctx.fillStyle = `rgba(${WHITE},${(1 - born) * .9})`; ctx.fillText(p.ch, x, y); } }                                                                        // still a character
         if (!p.keep) { const flick = L > 0 && L < .3 ? Math.sin(Math.PI * L / .3) * .6 : 0, al = Math.min(1, ((.36 + .62 * d) * tw * lerp(1 - .93 * L, 1.25, w) + flick) * near * born);
-          ctx.fillStyle = `rgba(${p.tint},${al})`; dot(x, y, size * (.95 + .7 * w) * (1 - .3 * L));
+          ctx.fillStyle = `rgba(${p.tint},${al})`; dot(x, y, size * (.75 + 1.1 * d * d) * (1 + .7 * w) * (1 - .3 * L));
           if (p.mag > 1.45 || w > .3) glow(GW, x, y, size * (4.5 + 3 * w), al * (p.mag > 2 ? .42 : p.mag > 1.45 ? .22 : .3 * w)); continue; }
         const wave = b > 0 && b < 1 ? clamp01(1 - Math.abs(b * 1.7 - .2 - p.rn) / .34) : 0;
         const done = clamp01((v - p.chk * .93) / .07), hit = done > 0 && done < 1 ? Math.sin(Math.PI * done) : 0, pop = Math.sin(Math.PI * L) * .8 + hit * 1.6 + wave * .7 + w * 1.1;
@@ -863,9 +879,14 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
         SPK.forEach((p, n) => { const q = clamp01((b - (n * .137) % .56) / .38); if (q <= 0 || q >= 1) return; const sn = Math.sin(Math.PI * q), x = SX[p], y = SY[p], Lg = 4 + 14 * sn, D = Lg * .42;
           ctx.strokeStyle = `rgba(255,255,255,${sn})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x - Lg, y); ctx.lineTo(x + Lg, y); ctx.moveTo(x, y - Lg); ctx.lineTo(x, y + Lg); ctx.stroke();
           ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(x - D, y - D); ctx.lineTo(x + D, y + D); ctx.moveTo(x - D, y + D); ctx.lineTo(x + D, y - D); ctx.stroke(); }); }
+      /* the sky is quieter behind the words above the scene and behind the readout below it */
+      ctx.globalCompositeOperation = 'destination-out';
+      let g = ctx.createLinearGradient(0, sy0 - 120, 0, sy0 + 6); g.addColorStop(0, `rgba(0,0,0,${.62})`); g.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, sy0 + 6);
+      g = ctx.createLinearGradient(0, sy1 - 2, 0, sy1 + 44); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, `rgba(0,0,0,${.6})`); ctx.fillStyle = g; ctx.fillRect(0, sy1 - 2, W, H - sy1 + 2);
+      ctx.globalCompositeOperation = 'source-over';
       const ph = t < 2.2 || t >= 22.5 ? 0 : t < 7.2 || t >= 21.4 ? 1 : t < 11.8 ? 2 : t < 14.1 ? 3 : 4;
       if (ph !== shown) { hud.phase.textContent = PHASE[ph]; hud.box.classList.toggle('done', ph === 4); shown = ph; }
-      hud.lines.textContent = fmt(lerp(76888, 36458, m)); hud.bar.style.width = lerp(100, 47.4, m).toFixed(1) + '%'; hud.checks.textContent = `${Math.round(v * 382)} / 382`;
+      hud.lines.textContent = fmt(36458 * m); hud.bar.style.width = (47.4 * m).toFixed(1) + '%'; hud.checks.textContent = `${Math.round(v * 382)} / 382`;
     };
     const fix = new URLSearchParams(location.search).get('t'), still = calm || fix !== null, rest0 = fix !== null ? +fix : 18;
     if (fix !== null) spin = .6 + .1 * rest0;
