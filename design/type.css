@@ -1,0 +1,69 @@
+/* Nanolize type. Three families, all open-licensed (SIL OFL 1.1) variable fonts, hosted by the site itself.
+   The model is Anthropic's own type: a serif for headlines, a sans for text and interface, a mono for readouts.
+   Anthropic's faces (Anthropic Serif, Sans and Mono; before them Tiempos and Styrene) are not open, so these are
+   the nearest open ones, set the way Anthropic sets its own: a fixed optical size and a little extra weight for
+   display, wider letter spacing for small text, and no synthesised bold or italic.
+   The files in fonts/ are Fontsource's (packages, versions and checksums: fonts.py); nothing is loaded from another host.
+   Each family comes in two files, Latin and extended Latin, and a browser fetches the second only when a page has
+   such letters (names like Dvořák or Łukasz). The serif also has an italic, for emphasis inside a headline. */
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:swap;src:url(fonts/source-serif-4-latin-opsz-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:swap;src:url(fonts/source-serif-4-latin-ext-opsz-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Source Serif 4";font-style:italic;font-weight:200 900;font-display:swap;src:url(fonts/source-serif-4-latin-opsz-italic.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:100 1000;font-display:swap;src:url(fonts/dm-sans-latin-opsz-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:100 1000;font-display:swap;src:url(fonts/dm-sans-latin-ext-opsz-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Geist Mono";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/geist-mono-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Geist Mono";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/geist-mono-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+:root{
+  /* ----- families. The Latin face comes first; Chinese falls to the reader's own system face, serif with serif,
+     sans with sans, so a Chinese page needs no download. ----- */
+  --serif:"Source Serif 4","Iowan Old Style","Palatino Linotype",Georgia,"Songti SC","Noto Serif CJK SC","Source Han Serif SC","SimSun",serif;
+  --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"PingFang SC","Microsoft YaHei",monospace;
+
+  /* ----- sizes for text: nine steps (the homepage has twenty-one values today) ----- */
+  --text-1:.6875rem;   /* 11px  tags inside diagrams */
+  --text-2:.75rem;     /* 12px  mono labels */
+  --text-3:.8125rem;   /* 13px  mono readouts, badges */
+  --text-4:.875rem;    /* 14px  small text, terminal lines */
+  --text-5:.9375rem;   /* 15px  navigation, small buttons, notes */
+  --text-6:1.0625rem;  /* 17px  body */
+  --text-7:1.1875rem;  /* 19px  item titles */
+  --text-8:1.3125rem;  /* 21px  panel titles */
+  --text-9:1.5rem;     /* 24px  minor headings */
+  /* ----- sizes for display: four steps that grow with the window ----- */
+  --display-1:clamp(1.75rem,3.9vw,3rem);       /* big numbers */
+  --display-2:clamp(1.75rem,4.3vw,3.6rem);     /* the statement */
+  --display-3:clamp(2.1rem,5.2vw,4rem);        /* section headlines */
+  --display-4:clamp(2.75rem,7.2vw,5.9rem);     /* the page's headline */
+
+  /* ----- line height, letter spacing, weight ----- */
+  --leading-flat:1; --leading-display:1.08; --leading-snug:1.3; --leading-lede:1.45; --leading-label:1.5; --leading-body:1.55; --leading-code:1.9;
+  --tracking-display:-.02em; --tracking-tight:-.015em; --tracking-normal:0; --tracking-small:.01em; --tracking-micro:.018em; --tracking-wide:.06em;
+  --w-regular:400; --w-medium:500; --w-semibold:600; --w-bold:700;
+
+  /* ----- the serif at display sizes. Left to itself the font would pick its finest cut (optical size 60) for a
+     headline; fixed at 24 and a little heavier, it stands sturdier and wider, nearer Anthropic's serif, and its
+     thin strokes hold on a dark ground. ----- */
+  --serif-display-opsz:24; --serif-display-weight:430;
+}
+body{font-synthesis:none}      /* no bold or italic made up by the browser: every style shown is a real font */
+
+/* ----- roles: what each kind of text is set in ----- */
+.t-hero,.t-headline,.t-statement,.t-number,.t-lede{font-family:var(--serif);font-weight:var(--serif-display-weight);font-variation-settings:"opsz" var(--serif-display-opsz);letter-spacing:var(--tracking-display)}
+.t-hero{font-size:var(--display-4);line-height:1.06}
+.t-headline{font-size:var(--display-3);line-height:var(--leading-display)}
+.t-statement{font-size:var(--display-2);line-height:1.18;letter-spacing:-.014em}
+/* a lede the way Anthropic opens a page: one sentence in the bold sans, the rest in the serif */
+.t-lede{font-size:var(--display-2);line-height:1.2;letter-spacing:-.012em}
+.t-lede b{font-family:var(--sans);font-weight:var(--w-bold);font-variation-settings:normal;letter-spacing:-.025em}
+.t-number{font-size:var(--display-1);line-height:var(--leading-flat);font-variant-numeric:tabular-nums}
+.t-title{font-family:var(--sans);font-weight:var(--w-medium);font-size:var(--text-8);line-height:1.1;letter-spacing:-.02em}
+.t-item{font-family:var(--sans);font-weight:var(--w-medium);font-size:var(--text-7);line-height:var(--leading-snug);letter-spacing:var(--tracking-tight)}
+.t-body{font-family:var(--sans);font-weight:var(--w-regular);font-size:var(--text-6);line-height:var(--leading-body)}
+.t-small{font-family:var(--sans);font-weight:var(--w-regular);font-size:var(--text-5);line-height:var(--leading-body)}
+.t-button{font-family:var(--sans);font-weight:var(--w-semibold);font-size:var(--text-6);line-height:1}
+.t-label{font-family:var(--mono);font-weight:var(--w-regular);font-size:var(--text-2);line-height:var(--leading-label);letter-spacing:var(--tracking-small)}
+.t-micro{font-family:var(--mono);font-weight:var(--w-regular);font-size:var(--text-1);line-height:var(--leading-label);letter-spacing:var(--tracking-micro)}
+.t-readout{font-family:var(--mono);font-weight:var(--w-medium);font-size:var(--text-3);line-height:1.35;letter-spacing:var(--tracking-small);font-variant-numeric:tabular-nums}
+.t-code{font-family:var(--mono);font-weight:var(--w-regular);font-size:var(--text-4);line-height:var(--leading-code)}

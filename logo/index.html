@@ -64,7 +64,7 @@ main{max-width:1180px;margin-inline:auto;padding:56px max(16px,3vw) 110px}
 .show>.m{position:absolute;left:16px;top:11px}
 .show.big{min-height:278px}
 .show.big .mark{font-size:clamp(30px,5.2vw,60px)}
-.show.light{background:#F3F4F1;border-color:transparent;color:#0B0D10;--ink:#0B0D10;--green-f:#5F9800;--lime:#76B900;--g:95,152,0;--tile:#fff;--tile-line:rgba(11,13,16,.2)}
+.show.light,.on-light{background:#F3F4F1;border-color:transparent;color:#0B0D10;--ink:#0B0D10;--green-f:#5F9800;--lime:#76B900;--g:95,152,0;--tile:#fff;--tile-line:rgba(11,13,16,.2)}
 .show.light>.m{color:#6C7480}
 .show.light .mark{font-size:26px}
 .small{font-size:13px!important}
@@ -146,6 +146,52 @@ main{max-width:1180px;margin-inline:auto;padding:56px max(16px,3vw) 110px}
 .batch h2{font-family:var(--serif);font-weight:400;font-size:2.1rem;line-height:1.15;letter-spacing:-.018em}
 .batch p{margin-top:10px;max-width:50em;color:var(--ink-sub)}
 .batch+.cand{margin-top:44px}
+
+/* ============================== third batch: J and D, five small adjustments each ============================== */
+/* J-1 lighter; J-2 flat ends; J-3 a leaning cut; J-4 lit from above; J-5 a wider cut at small sizes */
+.lg-j1,.lg-j2,.lg-j3,.lg-j4,.lg-j5{gap:.48em}
+.lg-j1 .sym,.lg-j3 .sym,.lg-j4 .sym,.lg-j5 .sym{width:1.34em;height:1.34em}
+.lg-j2 .sym{width:1.3em;height:1.3em}
+.lg-j2 .wm,.lg-j3 .wm,.lg-j4 .wm,.lg-j5 .wm{font-weight:700;letter-spacing:-.025em}
+.lg-j1{gap:.46em}
+.lg-j1 .wm{font-weight:600;letter-spacing:-.022em}
+.lg-j5 .sym.s,.lg-j5.small .sym.l,.lg-j5.i16 .sym.l,.lg-j5.i32 .sym.l{display:none}
+.lg-j5.small .sym.s,.lg-j5.i16 .sym.s,.lg-j5.i32 .sym.s{display:block}
+
+/* D-1 a bar; D-2 an underscore; D-3 a block as tall as a capital; D-4 the last letter in reverse; D-5 a prompt in front */
+.lg-d1 .wm,.lg-d2 .wm,.lg-d3 .wm,.lg-d4 .wm,.lg-d5 .wm{font-family:var(--mono);font-weight:500;font-size:1.02em;letter-spacing:-.035em}
+.lg-d1 .cur,.lg-d2 .cur,.lg-d3 .cur,.lg-d5 .cur{display:block;background:var(--green-f);box-shadow:0 0 .5em rgba(var(--g),.42);animation:cur 1.25s steps(1,end) infinite}
+.lg-d1{gap:.11em} .lg-d1 .cur{width:.11em;height:1.14em;border-radius:.055em}
+.lg-d2{gap:.1em} .lg-d2 .cur{align-self:flex-end;width:.6em;height:.115em;margin-bottom:.115em;border-radius:.05em}
+.lg-d3{gap:.15em} .lg-d3 .cur{width:.52em;height:.725em;border-radius:.06em;transform:translateY(-.012em)}
+.lg-d4{gap:0}
+.lg-d4 .inv{display:inline-block;margin-left:.07em;padding:.13em .075em .15em;border-radius:.07em;background:var(--green-f);color:#050607;box-shadow:0 0 .5em rgba(var(--g),.42);animation:inv 1.25s steps(1,end) infinite}
+.ico.lg-d4 .inv{margin:0;padding:.13em .16em .15em}
+@keyframes inv{58%{background:transparent;color:inherit;box-shadow:none}}
+.lg-d5{gap:.17em} .lg-d5 .cur{width:.46em;height:1.04em;border-radius:.07em}
+.lg-d5 .pr{margin-right:.2em;color:var(--ink-3);font-family:var(--mono);font-weight:500;font-size:1.02em}
+@media (prefers-reduced-motion: reduce){.lg-d1 .cur,.lg-d2 .cur,.lg-d3 .cur,.lg-d5 .cur,.lg-d4 .inv{animation:none}}
+
+/* how the adjustments are shown: the unchanged mark and its five adjustments, each as one card, then all six in the top bar */
+.vgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+.v{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:18px;background:var(--card);overflow:hidden;min-width:0}
+.v.base{box-shadow:inset 0 0 0 1px rgba(var(--hi),.16)}
+.v header{padding:16px 18px 0}
+.v header b{font-family:var(--mono);font-weight:400;font-size:.75rem;color:var(--green)}
+.v header h3{font-weight:500;font-size:1.125rem;line-height:1.3;letter-spacing:-.015em;margin:2px 0 0}
+.v header p{margin-top:6px;min-height:4.7em;font-size:.875rem;line-height:1.55;color:var(--ink-2)}
+.v .big{display:grid;place-items:center;flex:1;min-height:118px;padding:12px}
+.v .big .mark{font-size:clamp(26px,3vw,38px)}
+.v .at{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--line-2)}
+.v .at>div{display:flex;align-items:center;justify-content:center;gap:14px;min-height:62px;padding:10px 8px;min-width:0}
+.v .at .mark{font-size:17px}
+.stack{margin-top:14px}
+.stack .bar+.bar{border-top:0}
+.stack .bar .wrap{min-height:56px}
+.stack .bar .mark{margin-right:auto}
+.stack .bar .m{white-space:nowrap}
+@media (max-width:980px){.vgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.vgrid{grid-template-columns:minmax(0,1fr)}.v header p{min-height:0}.stack .bar .m{display:none}}
 </style>
 </head>
 <body>
@@ -190,6 +236,40 @@ main{max-width:1180px;margin-inline:auto;padding:56px max(16px,3vw) 110px}
     <path d="M5.6 18.9V5.1l12.8 13.8V5.1" clip-path="url(#c-jr)" style="fill:none;stroke:currentColor;stroke-width:4.2;stroke-linejoin:round;stroke-linecap:round"/>
   </symbol>
 
+  <!-- ===== third batch: J with one or two things changed at a time ===== -->
+  <!-- J-1: a lighter stroke (3.4 for 4.2) -->
+  <symbol id="s-j1" viewBox="0 0 24 24">
+    <defs><clipPath id="c-j1l"><rect x="0" y="0" width="11.1" height="24"/></clipPath><clipPath id="c-j1r"><rect x="12.9" y="0" width="11.1" height="24"/></clipPath></defs>
+    <path d="M5.3 19.2V4.8l13.4 14.4V4.8" clip-path="url(#c-j1l)" style="fill:none;stroke:var(--green-f);stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round"/><path d="M5.3 19.2V4.8l13.4 14.4V4.8" clip-path="url(#c-j1r)" style="fill:none;stroke:currentColor;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round"/>
+  </symbol>
+  <!-- J-2: flat ends and corners barely rounded -->
+  <symbol id="s-j2" viewBox="0 0 24 24">
+    <defs><clipPath id="c-j2l"><rect x="0" y="0" width="11.05" height="24"/></clipPath><clipPath id="c-j2r"><rect x="12.95" y="0" width="11.05" height="24"/></clipPath></defs>
+    <path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-j2l)" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:.9;stroke-linejoin:round"/>
+    <path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-j2r)" style="fill:currentColor;stroke:currentColor;stroke-width:.9;stroke-linejoin:round"/>
+  </symbol>
+  <!-- J-3: the cut leans forward by seven degrees -->
+  <symbol id="s-j3" viewBox="0 0 24 24">
+    <defs><clipPath id="c-j3l"><path d="M0 0H12.5L9.5 24H0Z"/></clipPath><clipPath id="c-j3r"><path d="M14.5 0H24V24H11.5Z"/></clipPath></defs>
+    <path d="M5.6 18.9V5.1l12.8 13.8V5.1" clip-path="url(#c-j3l)" style="fill:none;stroke:var(--green-f);stroke-width:4.2;stroke-linejoin:round;stroke-linecap:round"/><path d="M5.6 18.9V5.1l12.8 13.8V5.1" clip-path="url(#c-j3r)" style="fill:none;stroke:currentColor;stroke-width:4.2;stroke-linejoin:round;stroke-linecap:round"/>
+  </symbol>
+  <!-- J-4: each half lit from above: light green into the green, white into pale gray -->
+  <symbol id="s-j4" viewBox="0 0 24 24">
+    <!-- the light is in two masks, so the colours under it still follow the ground the mark stands on -->
+    <defs><clipPath id="c-j4l"><rect x="0" y="0" width="11" height="24"/></clipPath><clipPath id="c-j4r"><rect x="13" y="0" width="11" height="24"/></clipPath>
+      <linearGradient id="g-j4a" gradientUnits="userSpaceOnUse" x1="0" y1="3.5" x2="0" y2="20.5"><stop offset="0" stop-color="#fff"/><stop offset=".72" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <linearGradient id="g-j4b" gradientUnits="userSpaceOnUse" x1="0" y1="3.5" x2="0" y2="20.5"><stop offset=".22" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity=".6"/></linearGradient>
+      <mask id="m-j4a" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="url(#g-j4a)"/></mask>
+      <mask id="m-j4b" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="url(#g-j4b)"/></mask></defs>
+    <g clip-path="url(#c-j4l)"><path d="M5.6 18.9V5.1l12.8 13.8V5.1" style="fill:none;stroke:var(--green-f);stroke-width:4.2;stroke-linejoin:round;stroke-linecap:round"/><path d="M5.6 18.9V5.1l12.8 13.8V5.1" mask="url(#m-j4a)" style="fill:none;stroke:var(--lime);stroke-width:4.2;stroke-linejoin:round;stroke-linecap:round"/></g>
+    <g clip-path="url(#c-j4r)" mask="url(#m-j4b)"><path d="M5.6 18.9V5.1l12.8 13.8V5.1" style="fill:none;stroke:currentColor;stroke-width:4.2;stroke-linejoin:round;stroke-linecap:round"/></g>
+  </symbol>
+  <!-- J-5: as J when large; this one, with a wider cut and a heavier stroke, takes its place under 32px -->
+  <symbol id="s-j5s" viewBox="0 0 24 24">
+    <defs><clipPath id="c-j5l"><rect x="0" y="0" width="10.3" height="24"/></clipPath><clipPath id="c-j5r"><rect x="13.7" y="0" width="10.3" height="24"/></clipPath></defs>
+    <path d="M5.8 18.7V5.3l12.4 13.4V5.3" clip-path="url(#c-j5l)" style="fill:none;stroke:var(--green-f);stroke-width:4.7;stroke-linejoin:round;stroke-linecap:round"/><path d="M5.8 18.7V5.3l12.4 13.4V5.3" clip-path="url(#c-j5r)" style="fill:none;stroke:currentColor;stroke-width:4.7;stroke-linejoin:round;stroke-linecap:round"/>
+  </symbol>
+
   <!-- the four-pointed star that stands in for the dot of the i (C) -->
   <symbol id="s-star" viewBox="0 0 10 10"><path d="M5 0c.5 3.1 1.9 4.5 5 5-3.1.5-4.5 1.9-5 5-.5-3.1-1.9-4.5-5-5 3.1-.5 4.5-1.9 5-5z"/></symbol>
 
@@ -205,11 +285,31 @@ main{max-width:1180px;margin-inline:auto;padding:56px max(16px,3vw) 110px}
   <header class="top">
     <p class="m">nanolize homepage · 左上角的标志 · 10 个候选</p>
     <h1>Nanolize 标志候选</h1>
-    <p>十个方向不同的标志，文字都是 “Nanolize”，字体和颜色都取自主页本身。新的一批（F 到 J）在前，上一轮的五个（A 到 E）在后。每个候选依次放在主页的导航条里、放大、放在浅色底上，并缩到小图标的尺寸。主页还没有改动，选定之后再替换。</p>
+    <p>十个方向不同的标志，文字都是 “Nanolize”，字体和颜色都取自主页本身。最前面是选中的 J 和 D 各五个微调版，然后是 F 到 J，最后是 A 到 E。每个候选依次放在主页的导航条里、放大、放在浅色底上，并缩到小图标的尺寸。主页还没有改动，选定之后再替换。</p>
     <nav class="jump" aria-label="候选">
-      <a href="#f"><b>F</b>向内的箭头</a><a href="#g"><b>G</b>功能图</a><a href="#h"><b>H</b>token 点阵</a><a href="#i"><b>I</b>留下的 token</a><a href="#j"><b>J</b>互不相见的两半</a><a href="#a"><b>A</b>星座 N</a><a href="#b"><b>B</b>旋涡星系</a><a href="#c"><b>C</b>星点 i</a><a href="#d"><b>D</b>终端光标</a><a href="#e"><b>E</b>半满的 N</a><a href="#now"><b>0</b>现在的标志</a>
+      <a href="#jx"><b>J×5</b>J 的微调</a><a href="#dx"><b>D×5</b>D 的微调</a><a href="#f"><b>F</b>向内的箭头</a><a href="#g"><b>G</b>功能图</a><a href="#h"><b>H</b>token 点阵</a><a href="#i"><b>I</b>留下的 token</a><a href="#j"><b>J</b>互不相见的两半</a><a href="#a"><b>A</b>星座 N</a><a href="#b"><b>B</b>旋涡星系</a><a href="#c"><b>C</b>星点 i</a><a href="#d"><b>D</b>终端光标</a><a href="#e"><b>E</b>半满的 N</a><a href="#now"><b>0</b>现在的标志</a>
     </nav>
   </header>
+
+  <div class="batch" id="batch3" style="margin-top:72px">
+    <p class="m">第三批 · J 和 D 的微调</p>
+    <h2>大样不动，每次只改一两处</h2>
+    <p>选中的两个方向各做五个微调版。每张卡片写明相对原样改了什么；第一张是原样，放在一起比。卡片下面把六个依次放进主页的导航条，那是它们真正要待的地方。</p>
+  </div>
+
+  <section class="cand" id="jx" style="margin-top:44px">
+    <h2><b>J</b>互不相见的两半<span>原样和五个微调 · DM Sans</span></h2>
+    <p class="why">不动的部分：一个粗体 N 从中间切开，左半是绿色，右半是白色，右边接粗体的 Nanolize。</p>
+    <div class="vgrid" data-variants="j"></div>
+    <div class="frame stack" data-bars="j"></div>
+  </section>
+
+  <section class="cand" id="dx">
+    <h2><b>D</b>终端光标<span>原样和五个微调 · Geist Mono 500</span></h2>
+    <p class="why">不动的部分：等宽体的 Nanolize，后面带一个绿色的光标。动的只是光标的样子和位置。</p>
+    <div class="vgrid" data-variants="d"></div>
+    <div class="frame stack" data-bars="d"></div>
+  </section>
 
   <div class="batch" id="batch2">
     <p class="m">第二批 · F 到 J</p>
@@ -314,6 +414,27 @@ main{max-width:1180px;margin-inline:auto;padding:56px max(16px,3vw) 110px}
 <template id="mark-j"><a class="mark lg-j" href="#j" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-j"/></svg><span class="wm">Nanolize</span></a></template>
 <template id="ico-j"><span class="ico lg-j"><svg class="sym" aria-hidden="true"><use href="#s-j"/></svg></span></template>
 
+<template id="mark-j1"><a class="mark lg-j1" href="#j1" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-j1"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-j1"><span class="ico lg-j1"><svg class="sym" aria-hidden="true"><use href="#s-j1"/></svg></span></template>
+<template id="mark-j2"><a class="mark lg-j2" href="#j2" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-j2"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-j2"><span class="ico lg-j2"><svg class="sym" aria-hidden="true"><use href="#s-j2"/></svg></span></template>
+<template id="mark-j3"><a class="mark lg-j3" href="#j3" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-j3"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-j3"><span class="ico lg-j3"><svg class="sym" aria-hidden="true"><use href="#s-j3"/></svg></span></template>
+<template id="mark-j4"><a class="mark lg-j4" href="#j4" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-j4"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-j4"><span class="ico lg-j4"><svg class="sym" aria-hidden="true"><use href="#s-j4"/></svg></span></template>
+<template id="mark-j5"><a class="mark lg-j5" href="#j5" aria-label="Nanolize"><svg class="sym l" aria-hidden="true"><use href="#s-j"/></svg><svg class="sym s" aria-hidden="true"><use href="#s-j5s"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-j5"><span class="ico lg-j5"><svg class="sym l" aria-hidden="true"><use href="#s-j"/></svg><svg class="sym s" aria-hidden="true"><use href="#s-j5s"/></svg></span></template>
+<template id="mark-d1"><a class="mark lg-d1" href="#d1" aria-label="Nanolize"><span class="wm">Nanolize</span><i class="cur" aria-hidden="true"></i></a></template>
+<template id="ico-d1"><span class="ico lg-d1"><span class="wm" aria-hidden="true">N</span><i class="cur"></i></span></template>
+<template id="mark-d2"><a class="mark lg-d2" href="#d2" aria-label="Nanolize"><span class="wm">Nanolize</span><i class="cur" aria-hidden="true"></i></a></template>
+<template id="ico-d2"><span class="ico lg-d2"><span class="wm" aria-hidden="true">N</span><i class="cur"></i></span></template>
+<template id="mark-d3"><a class="mark lg-d3" href="#d3" aria-label="Nanolize"><span class="wm">Nanolize</span><i class="cur" aria-hidden="true"></i></a></template>
+<template id="ico-d3"><span class="ico lg-d3"><span class="wm" aria-hidden="true">N</span><i class="cur"></i></span></template>
+<template id="mark-d4"><a class="mark lg-d4" href="#d4" aria-label="Nanolize"><span class="wm" aria-hidden="true">Nanoliz<span class="inv">e</span></span></a></template>
+<template id="ico-d4"><span class="ico lg-d4"><span class="wm" aria-hidden="true"><span class="inv">N</span></span></span></template>
+<template id="mark-d5"><a class="mark lg-d5" href="#d5" aria-label="Nanolize"><span class="pr" aria-hidden="true">›</span><span class="wm">Nanolize</span><i class="cur" aria-hidden="true"></i></a></template>
+<template id="ico-d5"><span class="ico lg-d5"><span class="wm" aria-hidden="true">N</span><i class="cur"></i></span></template>
+
 <!-- how each candidate is shown -->
 <template id="showing">
   <div class="frame">
@@ -339,6 +460,35 @@ for (const sec of document.querySelectorAll('[data-cand]')) {
     if (size) el.classList.add(size);
     slot.replaceWith(el);
   }
+}
+
+/* the third batch: the unchanged mark and its five adjustments */
+const VARIANTS = {
+  j: [['j', 'J', '原样', '笔画粗 4.2，两端是圆头，缝是竖直的，文字用 700 的字重。'],
+      ['j1', 'J-1', '轻一档', '笔画从 4.2 减到 3.4，文字从 700 降到 600。整体轻了一档，和页面上的细线、衬线标题更合。'],
+      ['j2', 'J-2', '平头', '笔画两端改成平的，转角只留很小的圆角。字形更硬朗，上下正好顶齐。'],
+      ['j3', 'J-3', '斜切', '缝不再竖直，向前倾 7 度，两半像是错身而过。缝宽和字形都不变。'],
+      ['j4', 'J-4', '带光', '两半都是上亮下暗：左半由浅绿过渡到 NVIDIA 绿，右半由白渐渐变淡，像从上方打了一束光。形状不变。'],
+      ['j5', 'J-5', '小尺寸加宽缝', '大尺寸和原样完全一样。缩到 32px 以下换成缝更宽、笔画略粗的一版，做图标时两半仍分得开。']],
+  d: [['d', 'D', '原样', '块状光标，比字母略高，缓慢闪烁。'],
+      ['d1', 'D-1', '竖线光标', '光标换成编辑器里那种细竖线。更轻，文字本身更突出。'],
+      ['d2', 'D-2', '下划线光标', '光标换成贴着基线的下划线，老式终端的样子。占的地方最小。'],
+      ['d3', 'D-3', '齐字高的光标', '光标改成和大写字母一样高，底边落在基线上，像紧跟着的下一个字。'],
+      ['d4', 'D-4', '光标落在末字母上', '不另加光标，把最后的 e 反白成绿底深字，终端里光标停在字符上就是这样。小图标是绿底的 N。'],
+      ['d5', 'D-5', '带提示符', '前面加一个暗色的提示符，像一行刚输入完的命令，呼应页面里的终端。光标不变。']],
+};
+const stamp = (kind, id, size) => { const el = document.getElementById(kind + '-' + id).content.firstElementChild.cloneNode(true); if (size) el.classList.add(size); return el; };
+for (const grid of document.querySelectorAll('[data-variants]')) for (const [id, tag, name, note] of VARIANTS[grid.dataset.variants]) {
+  const card = document.createElement('article'); card.className = 'v' + (id.length === 1 ? ' base' : ''); card.id = id.length === 1 ? '' : id;
+  card.innerHTML = `<header><b>${tag}</b><h3>${name}</h3><p>${note}</p></header><div class="big"></div><div class="at"><div class="dk"></div><div class="on-light"></div></div>`;
+  card.querySelector('.big').append(stamp('mark', id));
+  card.querySelector('.dk').append(stamp('ico', id, 'i16'), stamp('ico', id, 'i32'), stamp('mark', id, 'small'));
+  card.querySelector('.on-light').append(stamp('mark', id));
+  if (!card.id) card.removeAttribute('id'); grid.append(card);
+}
+for (const box of document.querySelectorAll('[data-bars]')) for (const [id, tag, name] of VARIANTS[box.dataset.bars]) {
+  const bar = document.createElement('div'); bar.className = 'bar'; bar.innerHTML = `<div class="wrap"><span class="m">${tag} · ${name}</span><nav aria-hidden="true"><span>Method</span><span>Results</span><span>Use it</span><span>Cite</span></nav><span class="btn" aria-hidden="true">Paper</span></div>`;
+  bar.querySelector('.wrap').prepend(stamp('mark', id)); box.append(bar);
 }
 </script>
 </body>
