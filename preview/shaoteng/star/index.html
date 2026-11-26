@@ -481,6 +481,23 @@ button{font:inherit;color:inherit}
    (the unit's is wide enough for "tokens"), so the two bars are as long whatever the repository. */
 .cmp .ph .rp{color:var(--ink)}
 @media (min-width:360px){.cmp .ph .rp{letter-spacing:.04em}}
+/* ---- the wall of repositories that opens every loop (branch shaoteng; hero.js, THE WALL) ----
+   Rows of GitHub repositories under the buttons, written as GitHub writes a repository (owner / name) behind the GitHub mark in the
+   accent green, as in the ticker. It is the page's own text over the canvas (crisp at any pixel ratio), under the words (z-index 0
+   against the words' 1) and never in the pointer's way; its sides fade out as the ticker's do. hero.js moves the rows, the clicked
+   repository (.rw-fly), the pointer (.rw-cur) and the click's ring, and hides the whole of it once the scene has begun. */
+.repowall{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;overflow:hidden;pointer-events:none;visibility:hidden;text-align:left;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.repowall .rw-row{position:absolute;left:0;top:0;display:flex;white-space:nowrap;line-height:1;will-change:transform,opacity}
+.repowall .rw-chip{display:inline-flex;align-items:center;gap:.5em;margin-right:2.2em;padding:.55em .85em;border-radius:999px;font-family:var(--sans);font-weight:500;letter-spacing:-.01em;color:var(--ink)}
+.repowall .rw-chip svg{width:1.05em;height:1.05em;flex:none;fill:var(--green)}
+.repowall .rw-o{color:var(--ink-2);font-weight:400}
+.repowall .rw-s{color:var(--ink-3);font-weight:400;margin-inline:-.2em}
+.repowall .rw-n{text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:1px;text-underline-offset:.24em}
+.repowall .rw-cur{position:absolute;left:0;top:0;width:15px;height:22px;overflow:visible;opacity:0;transform-origin:1px 1px;fill:#fff;stroke:#050607;stroke-width:1.2;stroke-linejoin:round;filter:drop-shadow(0 2px 5px rgba(0,0,0,.55));will-change:transform,opacity}
+.repowall .rw-ring{position:absolute;left:0;top:0;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;opacity:0;box-shadow:inset 0 0 0 1.5px rgba(var(--hi),.7);will-change:transform,opacity}
+.repowall .rw-fly .rw-chip{position:relative}
+.repowall .rw-m{position:absolute;top:50%;transform:translateY(-50%);opacity:0;font-family:var(--mono);font-weight:600;line-height:1;letter-spacing:0;color:rgb(232,237,248)}
 </style>
 </head>
 <body>
@@ -505,12 +522,13 @@ button{font:inherit;color:inherit}
   <section class="hero" id="top">
     <canvas id="deep" aria-hidden="true"></canvas>
     <canvas id="sky" aria-hidden="true"></canvas>
+    <div class="repowall" id="wall" aria-hidden="true"></div>
     <div class="wrap">
       <span class="chip"><i></i>Technical report, 2026</span>
       <h1><span>Half the tokens.</span> <span>All the behavior.</span></h1>
       <p class="sub">Nanolize rewrites a bloated repository from scratch into a nano one that coding agents read, change and run for fewer tokens.</p>
       <p class="cta"><a class="btn go" href="#">Read the paper</a><a class="btn gh" href="#">Get the code</a></p>
-      <div class="stage" id="stage" role="img" aria-label="Animation: a wall of code from a real repository, with the file tree of that repository at the left, turns into a sky of stars joined by a tangle of lines, the same code drawn as a graph, while dotted leaders run from the folders and files of the tree to stars of the sky; then the tree fades. The stars fill the space of the scene, which is seen from low down and turns slowly. Then the sky is simplified to a subgraph: the stars and lines that stay light up green, growing out of one root as a tree, with a trunk, limbs that divide and a spray of twigs at every package, in a shape that differs from loop to loop: a neuron, a spiral galaxy, an oak with its roots, a sea fan or a bronchial tree; its lines are a calm green, brightest at the root and a little fainter the further out they are. Each loop is about another repository, named at the root of the tree and in the readout below: Detectron2 or one of eight Python libraries. As large a share of the stars stays as the nano rewrite keeps of that repository; for Detectron2, 36,458 of 76,888 lines. The rest lose their lines and dim, and stay on as the faint stars of the sky round the tree; the repository's checks run out through the tree along its lines, and then it glows once, softly. At the end the subgraph becomes the nanolized repository: its file tree appears at the left in green, reached by dotted leaders from the subgraph, and the green stars fly into the lines of its code at the right, about half as many lines as the loop began with. Stars and lines near the pointer brighten.">
+      <div class="stage" id="stage" role="img" aria-label="Animation: rows of GitHub repositories drift by, each with a green GitHub mark; a pointer clicks one of them, facebookresearch/detectron2 at first, and it opens into a wall of code from that repository, with the file tree of that repository at the left, turns into a sky of stars joined by a tangle of lines, the same code drawn as a graph, while dotted leaders run from the folders and files of the tree to stars of the sky; then the tree fades. The stars fill the space of the scene, which is seen from low down and turns slowly. Then the sky is simplified to a subgraph: the stars and lines that stay light up green, growing out of one root as a tree, with a trunk, limbs that divide and a spray of twigs at every package, in a shape that differs from loop to loop: a neuron, a spiral galaxy, an oak with its roots, a sea fan or a bronchial tree; its lines are a calm green, brightest at the root and a little fainter the further out they are. Each loop is about another repository, named at the root of the tree and in the readout below: Detectron2 or one of eight Python libraries. As large a share of the stars stays as the nano rewrite keeps of that repository; for Detectron2, 36,458 of 76,888 lines. The rest lose their lines and dim, and stay on as the faint stars of the sky round the tree; the repository's checks run out through the tree along its lines, and then it glows once, softly. At the end the subgraph becomes the nanolized repository: its file tree appears at the left in green, reached by dotted leaders from the subgraph, and the green stars fly into the lines of its code at the right, about half as many lines as the loop began with. Stars and lines near the pointer brighten.">
         <div class="cmp m" id="cmp">
           <span class="ph"><span class="rp" id="orb-repo">detectron2</span><i>·</i><span class="pz" id="orb-phase">delivered · −52.6% lines</span></span>
           <div class="row"><span class="k">original</span><span class="bar"><i></i></span><b class="num" id="orb-from">76,888</b><span class="u">lines</span><b class="num" id="orb-frozen">382</b><span class="w"><span class="x">behavior </span>checks</span></div>
@@ -750,7 +768,8 @@ button{font:inherit;color:inherit}
   const seen = new IntersectionObserver(es => es.forEach(e => { e.target._on = e.isIntersecting; }), { threshold: .05 });
   const scene = (el, period, fn) => { const s = { t: 0 }; seen.observe(el); loops.push(dt => { if (el._on) { s.t = (s.t + dt) % period; fn(s.t); } }); return s; };
 
-  /* ---------------- hero. One loop tells the story: a wall of complicated code, and at its left the file tree of the
+  /* ---------------- hero (branch shaoteng: every loop now opens on THE WALL of GitHub repositories, and the sky plays at twice the
+     speed, SKY; both below). One loop tells the story: a wall of complicated code, and at its left the file tree of the
      repository it stands for (folders, files, connectors); the code turns into a sky of stars tied together by a
      tangle of lines (the same code, as a graph), while fine dotted leaders run out of the tree's rows to
      stars of that sky, reach them and let go in one gesture, and the tree goes with them (they are there
@@ -818,6 +837,13 @@ button{font:inherit;color:inherit}
   (() => {
     const hero = $('#top'), cv = $('#sky'), ctx = cv.getContext('2d'), stage = $('#stage'), bar = document.querySelector('.nav');
     const N = 760, T = 27.5, A0 = 2, A1 = 4, G0 = 5.2, G1 = 9.6, H0 = 14.5, E0 = 21.5, E1 = 22.5, E2 = 23.95, FACE = 17, TAU = Math.PI * 2;   // 760 stars; how many of them stay is the repository's (REPOS); the loop's times, in seconds (design 8: a quicker loop): T: a loop; A0: the code lets go of its characters; A1: the stars have settled; G0 to G1: the sky is nanolized; H0: the finishing light has settled and the hold begins; E0: the hold ends and the nanolized repository's tree opens; E1: the stars set out for its code; E2: it stands; FACE: when a shape that names its good sides shows one (next())
+    /* Branch shaoteng: the sky plays at twice the speed. From A0, the code letting go of its characters, to E0, the end of the hold, a
+       live loop runs the scene's timeline twice as fast (SKY: half the time), so the sky's whole course and its hold take half as
+       long (19.5 s become 9.75 s) and a loop 17.75 s, before THE WALL; the opening code and the nanolized repository at the end keep
+       their time. Every time named in this script is the scene's own (tau(): the scene's time at a live loop's time; disp(): the
+       other way), and so is ?t=, so that a frozen frame is the same frame as in design 9. */
+    const SKY = .5, HALF = (E0 - A0) * (1 - SKY), TL = T - HALF;
+    const tau = t => t < A0 ? t : t < A0 + (E0 - A0) * SKY ? A0 + (t - A0) / SKY : t + HALF, disp = s => s < A0 ? s : s < E0 ? A0 + (s - A0) * SKY : s - HALF;
     const WHITE = '206,214,232', NV = '118,185,0', G10 = '129,197,33', G11 = '139,206,55', G12 = '202,240,167', LIME = '196,240,110', PALE = '226,246,178', STAR = '232,237,248', TINT = [STAR, STAR, STAR, STAR, STAR, '188,208,255', '188,208,255', '255,232,208'];   // a night sky's stars: cool white, a few blue-white, fewer warm
     /* THE REPOSITORIES. Each loop is about one of the nine the page reports on: Detectron2 and the eight libraries
        of the results table. name: as the project writes it; it stands at the root of the tree and in the readout.
@@ -3172,8 +3198,8 @@ def loads(s: str, /, *, parse_float: ParseFloat = float) -> dict[str, Any]:
       for (let j = 0, q = 0; j < n; j++) { const to = lo + (hi - lo) * (j + 1) / n; band.length = 0; for (; q < m - (n - 1 - j) && (!band.length || pool[q][1] < to); q++) band.push(pool[q]);
         band.sort((p, q) => p[0] - q[0]); const a = Math.floor(band.length * (phone ? .25 : .1)), b = Math.max(a + 1, Math.ceil(band.length * (phone ? .6 : .4))); let best = band[a][2]; for (let k = a + 1; k < b; k++) if (S[band[k][2]].mag > S[best].mag) best = band[k][2]; out.push(best); } };
     const plant = () => { if (!S.length || !sized) return; const fixed = still && ASK.has('spin'), turn = fixed ? spin : spin - .1 * (still ? rest0 : clock), f = ASK.get('from');
-      if (FT.of !== S) { FT.was = still ? REPOS.find(r => r.name === f) || null : FT.now; FT.turn = !still || f !== null; FT.now = REPO; }      // a new scene: what stood here in the loop before
-      aim(turn + (fixed ? 0 : .1 * (A1 - .4)), FT.out, CL, TREE[REPO.name][FT.v].length - 1); aim(turn + (fixed ? 0 : .1 * (E0 + 1)), FT.back, K, NANO[REPO.name].rows.length - 1); FT.of = S; };
+      if (FT.of !== S) { FT.was = still ? REPOS.find(r => r.name === f) || null : null; FT.turn = !still || f !== null; FT.now = REPO; }      // a new scene: what stood here in the loop before (a live loop opens from THE WALL, so its tree opens from its own folder, as at load)
+      aim(turn + (fixed ? 0 : .1 * (still ? A1 - .4 : disp(A1 - .4))), FT.out, CL, TREE[REPO.name][FT.v].length - 1); aim(turn + (fixed ? 0 : .1 * (still ? E0 + 1 : disp(E0 + 1))), FT.back, K, NANO[REPO.name].rows.length - 1); FT.of = S; };
     /* one leader, between a row's end (x0, y0) and its star (x3, y3): ONE STROKE of fine dots (design 9), level through the tree's
        column to the edge of the code, then on without a break along a curve that bends to the star. Only the part between `from` and
        `to` of its whole length is there (0 at the row, 1 at the star): nothing of it stands while nothing is mapped, and it never
@@ -3614,14 +3640,14 @@ def loads(s: str, /, *, parse_float: ParseFloat = float) -> dict[str, Any]:
     const facing = (name, seed) => { const f = ABOUT[name].face; if (!f) return NaN; let at = dice(seed ^ 0x51F15E)() * f.reduce((sum, w) => sum + w[1] - w[0], 0);       // a turn out of the shape's good sides, wide ranges more often
       for (const w of f) { if (at <= w[1] - w[0]) return w[0] + at; at -= w[1] - w[0]; } return f[0][0]; };
     const asked = ASK.get('repo'), ASKED = REPOS.find(r => r.name === asked); if (asked && !ASKED) console.error(`no repository '${asked}'; there are: ${REPOS.map(r => r.name).join(', ')}`);
-    const which = () => { if (ASKED || still) return ASKED || REPOS[0];
+    const which = () => { if (ASKED || still || !turns) return ASKED || REPOS[0];      // the first loop is about Detectron2, the repository the page comes back to further down (THE WALL)
       if (!shelf.length) { shelf.push(...REPOS); for (let i = shelf.length - 1; i > 0; i--) { const j = Math.floor(pick() * (i + 1)), o = shelf[i]; shelf[i] = shelf[j]; shelf[j] = o; } if (shelf[shelf.length - 1] === REPO && turns) { shelf[shelf.length - 1] = shelf[0]; shelf[0] = REPO; } }   // the one just shown goes to the bottom of the new bag
       return shelf.pop(); };
     const next = () => { let name = ASK.get('shape'); if (name && !SHAPES[name]) console.error(`no shape '${name}'; there are: ${Object.keys(SHAPES).join(', ')}`);
       if (!SHAPES[name]) { if (still) name = 'neuron'; else { for (let tries = 0; !bag.length; tries++) { bag.push(...Object.keys(SHAPES)); for (let i = bag.length - 1; i > 0; i--) { const j = Math.floor(deal() * (i + 1)), o = bag[i]; bag[i] = bag[j]; bag[j] = o; }
         if (tries < 60 && (kin(bag[bag.length - 1], last) || bag.some((n, i) => i && kin(n, bag[i - 1])))) bag.length = 0; } name = bag.pop(); } }
       const repo = which(), seed = seed0 + 7919 * turns++ | 0; make(name, seed, repo); const to = facing(last, seed);
-      if (to === to && fix === null && !ASK.has('spin')) spin = to - (still ? 0 : .1 * (FACE - clock)); };
+      if (to === to && fix === null && !ASK.has('spin')) spin = to - (still ? 0 : .1 * (disp(FACE) - clock)); };      // the scene turns at the loop's pace, so FACE comes at disp(FACE) of a live loop
     spin = ASK.has('spin') ? +ASK.get('spin') || 0 : still ? .6 + .1 * rest0 : .6;                     // the still shown under reduced motion is the frame ?t=18, turn and all
     const tell = () => { if (ASK.get('stats') === 'log') console.error(INFO.join('  |  ')); };          // ?stats=log: the numbers go to the console too, as an error, so that a screenshot tool prints them
     next();
@@ -3634,20 +3660,99 @@ def loads(s: str, /, *, parse_float: ParseFloat = float) -> dict[str, Any]:
       for (let n = 0; n < sweep; n++) { const seed = seed0 + 7919 * n | 0, repo = ASKED || REPOS[n % REPOS.length]; try { build(last, seed, repo); for (const k in NUM) { lo[k] = k in lo ? Math.min(lo[k], NUM[k]) : NUM[k]; hi[k] = k in hi ? Math.max(hi[k], NUM[k]) : NUM[k]; } } catch (e) { bad.push(`${repo.name}, seed ${seed}: ${e.message}`); } }
       console.error(`${last}, ${sweep} seeds from ${seed0}, ${ASKED ? `for ${ASKED.name}` : `the ${REPOS.length} repositories in turn`}:  ${bad.length} failed${bad.length ? ` (${bad.slice(0, 5).join(';  ')})` : ''};  ${Object.keys(lo).map(k => `${k} ${lo[k]} to ${hi[k]}`).join(', ')}`);
       make(last, seed0, first); }
+    /* THE WALL (branch shaoteng). Before the code, every loop opens on what Nanolize is for: repositories on GitHub. A wall of them
+       drifts by in rows under the buttons, each a green GitHub mark and owner / name, every other row the other way, the rows a
+       little smaller and fainter the further they are from the middle one. A pointer comes up from the lower right to the loop's
+       repository in the middle row, which slows under it and stops; it lights as GitHub lights a link under the pointer, and is
+       clicked (a ring). Then the other repositories go out, each leaving a star for a moment where its mark was, and the clicked one
+       moves to where the file tree's own folder stands and becomes it, as the opening of the scene (its tree and its code, as at
+       t = 0) comes up under it. The wall takes P seconds before the scene's t = 0, and the scene's clock and turn stand still
+       meanwhile, so every time of the timeline above is as it was; a frozen frame of the wall is ?t=-seconds (?t=-1.5: a second and
+       a half before the code). At the loop's turn the canvas is kept as it stands (the nano code and tree) and fades out over the
+       wall's first W_SNAP seconds, while behind it the next scene is made. On the wall: the thirteen repositories the project has
+       run (the nine the page reports on and four more), and thirty-four like them that fill it out (Python libraries, vision, LLM
+       inference and quantization, coding agents, security tools), every one checked on GitHub (2026-11-26). Its words are the page's
+       own text, not the canvas's, so they are crisp at any pixel ratio. Times in seconds of the wall: */
+    const P = 3.7, W_IN = [.1, .7], W_SNAP = .45, W_CUR = [.85, 2.3], W_SLOW = [1.5, 2.3], W_HOT = [2.05, 2.3], W_CLICK = 2.5, W_AWAY = [2.5, 2.85], W_FLY = [2.65, 3.1], W_X = 3.15;   // P: the wall; W_IN: it comes up (a first loop's over [0, .5]); W_SNAP: the loop before gives way; W_CUR: the pointer comes to the repository; W_SLOW: its row slows to a stop under it; W_HOT: it lights; W_CLICK: the click; W_AWAY: the rest go; W_FLY: the clicked one moves to the tree's folder (the rest mostly gone before it crosses them) and stands on it before it gives way to it (from W_X); W_X: the scene's opening comes up under it, whole at P
+    const OWNER = { 'detectron2': 'facebookresearch', 'bidict': 'jab', 'click': 'pallets', 'more-itertools': 'more-itertools', 'packaging': 'pypa', 'python-dotenv': 'theskumar', 'requests': 'psf', 'tomli': 'hukkin', 'tqdm': 'tqdm' };
+    const WALL = [...REPOS.map(r => `${OWNER[r.name]}/${r.name}`), 'mit-han-lab/llm-awq', 'deepseek-ai/DeepInfer', 'ReversecLabs/needle', 'SWE-agent/mini-swe-agent',      // the thirteen that were run
+      'encode/httpx', 'pallets/flask', 'pallets/jinja', 'pydantic/pydantic', 'Textualize/rich', 'fastapi/typer', 'python-attrs/attrs', 'jd/tenacity', 'urllib3/urllib3', 'aio-libs/aiohttp', 'marshmallow-code/marshmallow', 'python-jsonschema/jsonschema', 'yaml/pyyaml', 'dateutil/dateutil', 'pytest-dev/pytest',
+      'open-mmlab/mmdetection', 'facebookresearch/segment-anything', 'ultralytics/ultralytics', 'huggingface/pytorch-image-models', 'facebookresearch/dinov2', 'open-mmlab/mmsegmentation',
+      'vllm-project/vllm', 'sgl-project/sglang', 'huggingface/transformers', 'AutoGPTQ/AutoGPTQ', 'mit-han-lab/smoothquant', 'huggingface/text-generation-inference',
+      'SWE-agent/SWE-agent', 'OpenHands/OpenHands', 'Aider-AI/aider', 'mitmproxy/mitmproxy', 'sqlmapproject/sqlmap', 'sensepost/objection', 'androguard/androguard'];
+    const WL = { el: $('#wall'), rows: [], of: null, key: '', snap: null, on: false, mid: 0, at: 7, per: 14 };   // the wall's element and rows; of, key: the repository and the stage it was laid out for; snap: the canvas as the loop before ended
+    const chip = s => { const [o, n] = s.split('/'); return `<span class="rw-chip"><svg aria-hidden="true"><use href="#gh"/></svg><span class="rw-o">${o}</span><span class="rw-s">/</span><span class="rw-n">${n}</span></span>`; };
+    const wallMake = () => {      // rows of 14 repositories, each row twice over so that it wraps; the loop's repository is the middle row's 8th, and stands in its row only as a gap (the one that moves is .rw-fly)
+      const phone = W < 600, pitch = phone ? 38 : 50, nr = Math.max(3, Math.min(9, Math.floor((sy1 - sy0 + 16) / pitch))), mid = WL.mid = (nr - 1) >> 1, rng = dice(seed0 ^ 0x3A11 ^ Math.imul(turns, 7919));
+      const own = `${OWNER[REPO.name]}/${REPO.name}`, deck = WALL.filter(s => s !== own), spec = []; let html = '', top = 0;
+      const shuffle = () => { for (let i = deck.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)), o = deck[i]; deck[i] = deck[j]; deck[j] = o; } };
+      shuffle();   // one deck dealt row after row and shuffled again whenever it is through: a repository comes back only some three rows on, and never in the same company
+      for (let k = 0; k < nr; k++) { const seq = []; for (let i = 0; i < WL.per; i++) { if (top === deck.length) { top = 0; shuffle(); } seq.push(deck[top++]); }
+        if (k === mid) seq[WL.at] = own;
+        const d = Math.abs(k - mid) / Math.max(1, mid, nr - 1 - mid), size = phone ? 13 - 2 * d : 16 - 3 * d;
+        spec.push({ d, size, al: 1 - .55 * d, dir: (k - mid) % 2 ? 1 : -1, v: phone ? 12 + 10 * rng() : 18 + 16 * rng(), ph: rng(), y: (sy0 + sy1) / 2 + (k - (nr - 1) / 2) * pitch });
+        html += `<div class="rw-row" style="font-size:${size}px">${seq.map(chip).join('')}${seq.map(chip).join('')}</div>`; }
+      html += `<div class="rw-row rw-fly" style="font-size:${spec[mid].size}px">${chip(own).replace('</span></span>', `</span><span class="rw-m">${REPO.name}/</span></span>`)}</div><svg class="rw-cur" viewBox="0 0 14 21" aria-hidden="true"><path d="M1 1v16.2l4.1-3.9 2.9 6.6 2.7-1.2-2.9-6.5h5.5Z"/></svg><i class="rw-ring"></i>`;
+      WL.el.innerHTML = html;
+      WL.rows = [...WL.el.querySelectorAll('.rw-row:not(.rw-fly)')].map((el, k) => { const s = spec[k], kids = [...el.children], box = el.getBoundingClientRect(), h = el.offsetHeight;
+        el.style.top = (s.y - h / 2).toFixed(1) + 'px';
+        return { el, ...s, h, L: kids[WL.per].offsetLeft - kids[0].offsetLeft, marks: kids.map(c => { const m = c.firstElementChild.getBoundingClientRect(); return m.left + m.width / 2 - box.left; }) }; });
+      const m = WL.rows[mid], kids = m.el.children, t = kids[WL.at], fly = WL.fly = WL.el.querySelector('.rw-fly'), fc = fly.firstElementChild, nm = fc.querySelector('.rw-n');
+      t.style.visibility = kids[WL.at + WL.per].style.visibility = 'hidden';
+      WL.cl = t.offsetLeft; WL.nl = nm.offsetLeft; WL.nc = nm.offsetLeft + nm.offsetWidth / 2; WL.stop = (sx0 + sx1) / 2 - t.offsetLeft - t.offsetWidth / 2;   // the row stops with the repository in the middle of the stage
+      WL.fc = fc; WL.nm = nm; WL.mn = fc.querySelector('.rw-m'); WL.mn.style.left = WL.nl + 'px'; WL.mn.style.letterSpacing = `${(fs * .018 * spec[mid].size / (FT.fs * 1.09)).toFixed(3)}px`; /* the canvas sets its type .018 of the code's size apart (layout()); so does the label, before it is scaled */ WL.part = [fc.firstElementChild, fc.querySelector('.rw-o'), fc.querySelector('.rw-s')]; WL.cur = WL.el.querySelector('.rw-cur'); WL.ring = WL.el.querySelector('.rw-ring');
+      fly.style.top = (m.y - m.h / 2).toFixed(1) + 'px'; fly.style.transformOrigin = `${WL.nl}px 50%`; };
+    const rowX = (r, u) => { if (r !== WL.rows[WL.mid]) return -((((r.ph * r.L - r.dir * r.v * u) % r.L) + r.L) % r.L);      // a row drifts on at its own speed
+      const [a, b] = W_SLOW, rem = u >= b ? 0 : u >= a ? r.v * (b - u) ** 2 / (2 * (b - a)) : r.v * ((b - a) / 2 + a - u); return WL.stop - r.dir * rem; };   // the middle one slows to a stop under the pointer
+    const bump = (u, a, b) => Math.sin(Math.PI * seg(u, a, b));
+    const wallFrame = (u, first) => {
+      const key = `${W}|${sy0}|${sy1}`; if (WL.of !== REPO || WL.key !== key) { wallMake(); WL.of = REPO; WL.key = key; }
+      if (!WL.on) { WL.el.style.visibility = 'visible'; WL.on = true; }
+      const a = first ? ease(seg(u, 0, .5)) : ease(seg(u, W_IN[0], W_IN[1])), away = ease(seg(u, W_AWAY[0], W_AWAY[1]));
+      WL.el.style.opacity = a.toFixed(3);
+      for (const r of WL.rows) { r.x = rowX(r, u); r.el.style.transform = `translate3d(${r.x.toFixed(1)}px,0,0)`; r.el.style.opacity = (r.al * (1 - away)).toFixed(3); }
+      /* the loop's repository: lit under the pointer, then on its way to the tree's own folder (its name onto the folder's name, at the folder's type size), the mark and the owner going */
+      const m = WL.rows[WL.mid], rows = TREE[REPO.name][FT.v], f = ease(seg(u, W_FLY[0], W_FLY[1])), fx = FT.x + FT.fs * 1.65, fy = FT.mid - (rows.length - 1) / 2 * FT.pitch + .5;
+      const X = lerp(m.x + WL.cl, fx - WL.nl, f), Y = lerp(0, fy - m.y, f), sc = lerp(1, FT.fs * 1.09 / m.size, f), hot = ease(seg(u, W_HOT[0], W_HOT[1])) * (1 - ease(seg(u, W_CLICK + .05, W_CLICK + .4)));
+      WL.fly.style.transform = `translate3d(${X.toFixed(1)}px,${Y.toFixed(1)}px,0) scale(${sc.toFixed(4)})`; WL.fly.style.opacity = (1 - ease(seg(u, W_X, P - .1))).toFixed(3);
+      WL.fc.style.backgroundColor = `rgba(255,255,255,${(.075 * hot).toFixed(3)})`; WL.fc.style.boxShadow = `inset 0 0 0 1px rgba(255,255,255,${(.2 * hot).toFixed(3)})`; WL.nm.style.textDecorationColor = `rgba(255,255,255,${(.6 * hot).toFixed(3)})`;
+      { const go = (1 - ease(seg(u, W_FLY[0], W_FLY[0] + .35))).toFixed(3), mono = ease(seg(u, W_FLY[0] + .18, W_FLY[0] + .33)); for (const e of WL.part) e.style.opacity = go;
+        WL.nm.style.opacity = (1 - mono).toFixed(3); WL.mn.style.opacity = mono.toFixed(3); }      // on the way the name turns into the folder's own, in the tree's type (the mono, 600, at the folder's size once scaled), so that it lies exactly on the folder's name the scene then draws
+      /* the pointer, from the lower right of the stage to the repository's name, and the click */
+      const ex = WL.stop + WL.cl + WL.nc, ey = m.y + 2, bx = sx1 - (sx1 - sx0) * .08, by = sy1 + 6, k = ease(seg(u, W_CUR[0], W_CUR[1])), j = 1 - k;
+      const qx = j * j * j * bx + 3 * j * j * k * bx + 3 * j * k * k * (ex + 150) + k * k * k * ex, qy = j * j * j * by + 3 * j * j * k * (by - .6 * (by - ey)) + 3 * j * k * k * (ey + 36) + k * k * k * ey;
+      WL.cur.style.transform = `translate3d(${qx.toFixed(1)}px,${qy.toFixed(1)}px,0) scale(${(1 - .16 * bump(u, W_CLICK - .08, W_CLICK + .1)).toFixed(3)})`;
+      WL.cur.style.opacity = (seg(u, W_CUR[0], W_CUR[0] + .2) * (1 - seg(u, W_CLICK + .25, W_CLICK + .5))).toFixed(3);
+      const rg = seg(u, W_CLICK, W_CLICK + .65); WL.ring.style.transform = `translate3d(${ex.toFixed(1)}px,${ey.toFixed(1)}px,0) scale(${lerp(.3, 2.6, ease(rg)).toFixed(3)})`; WL.ring.style.opacity = (u >= W_CLICK ? .75 * (1 - rg) : 0).toFixed(3);
+      /* the canvas: the loop before giving way, then nothing but the stars the other repositories leave, then the scene's opening coming up */
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (!first && WL.snap && u < W_SNAP) { ctx.clearRect(0, 0, W, H); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1 - ease(u / W_SNAP); ctx.drawImage(WL.snap, 0, 0); ctx.globalAlpha = 1; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+      else if (u >= W_X) { draw(0); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.globalCompositeOperation = 'destination-out'; ctx.fillStyle = `rgba(0,0,0,${(1 - ease(seg(u, W_X, P))).toFixed(3)})`; ctx.fillRect(0, 0, W, H); ctx.globalCompositeOperation = 'source-over'; }
+      else ctx.clearRect(0, 0, W, H);
+      const st = ease(clamp01((away - .35) / .65)) * (1 - ease(seg(u, W_AWAY[1] - .05, W_AWAY[1] + .35))), rim = W * .09;      // a star where a mark was, once the mark is nearly gone; each a little off the mark's place and of its own brightness, so that they read as stars, not as a grid
+      if (st > .01) WL.rows.forEach((r, k) => r.marks.forEach((mx, i) => { if (r === m && i % WL.per === WL.at) return; const h = dice(k * 977 + i % WL.per * 131 + 7), b = .45 + .55 * h(), x = r.x + mx + 14 * (h() - .5), e = clamp01(x / rim) * clamp01((W - x) / rim) * st * r.al * b; if (e < .01) return;
+        const y = r.y + 18 * (h() - .5) - 6 * away; glow(GW, x, y, (3.5 + 3 * (1 - r.d)) * (.7 + .5 * b), e * .8); ctx.fillStyle = `rgba(${STAR},${e.toFixed(3)})`; dot(x, y, (.7 + .4 * (1 - r.d)) * (.7 + .5 * b)); }));
+      veil(hud.box, 0); };
+    const wallOff = () => { if (WL.on) { WL.el.style.visibility = 'hidden'; WL.on = false; } };
+    const wallSnap = () => { const c = WL.snap || (WL.snap = document.createElement('canvas')); c.width = cv.width; c.height = cv.height; c.getContext('2d').drawImage(cv, 0, 0); };
+    const show = t => { if (t < 0) wallFrame(Math.max(0, P + t), !WL.snap); else { wallOff(); draw(still ? t : tau(t)); } };   // a moment of the loop (a live loop's time; a frozen frame's is the scene's own): before 0 the wall
+    let intro = still ? -1 : 0;      // where in the wall a live loop is; -1: past it, in the scene
     layout(); seen.observe(hero);
     loops.push(dt => { if (still) return; yaw += (tyaw - yaw) * Math.min(1, dt * 2.5); pitch += (tpitch - pitch) * Math.min(1, dt * 2.5);
       lens += ((performance.now() - seenAt < 2600 ? 1 : 0) - lens) * Math.min(1, dt * 5);               // the sky wakes to the pointer and settles after it rests
-      if (!hero._on) return; clock += dt; if (clock >= T) { clock -= T; next(); seat(); tell(); }                 // the loop comes round: only the nano code and its tree are on the screen, and behind them the next scene is made
-      spin += dt * .1; draw(clock); });
+      if (!hero._on) return;
+      if (intro >= 0) { intro += dt; if (intro >= P) { clock = intro - P; intro = -1; } }
+      else { clock += dt; if (clock >= TL) { wallSnap(); intro = clock - TL; clock = 0; next(); seat(); tell(); } }   // the loop comes round: the canvas is kept as it stands, the next scene is made behind it, and the wall opens the next loop
+      if (intro < 0) spin += dt * .1; show(intro >= 0 ? intro - P : clock); });
     /* the pointer: the whole sky leans towards it (a fifth more than in design 5, so that near limbs are seen to move against far ones), the stars near it answer, and a click sends a ripple out */
     const point = e => { const r = hero.getBoundingClientRect(); px = e.clientX - r.left; py = e.clientY - r.top; const on = py >= 0 && py <= r.height && !(bar && e.clientY < bar.getBoundingClientRect().bottom);       // the hero begins under the top bar, and the bar stays over it as the page scrolls: a pointer on the bar is not on the sky
       if (on) { seenAt = performance.now(); if (e.type === 'pointerdown') { rx = px; ry = py; rt = seenAt; } }
       if (e.pointerType !== 'touch') { tyaw = (e.clientX / innerWidth - .5) * .6; tpitch = (e.clientY / innerHeight - .5) * .18; }
-      if (still) { lens = on ? 1 : 0; draw(rest0); } };
+      if (still) { lens = on ? 1 : 0; show(rest0); } };
     addEventListener('pointermove', point, { passive: true }); addEventListener('pointerdown', point, { passive: true });
     /* the top bar: at the top of the page it is clear and the sky is seen through it; it is glass again once the page is scrolled */
     const clear0 = () => bar.classList.toggle('top', scrollY < 8); if (bar) { addEventListener('scroll', clear0, { passive: true }); clear0(); }
-    const redraw = () => { layout(); draw(still ? rest0 : clock); };
+    const redraw = () => { layout(); WL.of = null; show(still ? rest0 : intro >= 0 ? intro - P : clock); };   // the wall is laid out again too (the fonts may have come)
     new ResizeObserver(redraw).observe(hero); redraw(); tell();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);   // the code and the names need the page's mono face
   })();
