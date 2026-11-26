@@ -3640,7 +3640,7 @@ def loads(s: str, /, *, parse_float: ParseFloat = float) -> dict[str, Any]:
     const facing = (name, seed) => { const f = ABOUT[name].face; if (!f) return NaN; let at = dice(seed ^ 0x51F15E)() * f.reduce((sum, w) => sum + w[1] - w[0], 0);       // a turn out of the shape's good sides, wide ranges more often
       for (const w of f) { if (at <= w[1] - w[0]) return w[0] + at; at -= w[1] - w[0]; } return f[0][0]; };
     const asked = ASK.get('repo'), ASKED = REPOS.find(r => r.name === asked); if (asked && !ASKED) console.error(`no repository '${asked}'; there are: ${REPOS.map(r => r.name).join(', ')}`);
-    const which = () => { if (ASKED || still || !turns) return ASKED || REPOS[0];      // the first loop is about Detectron2, the repository the page comes back to further down (THE WALL)
+    const which = () => { if (ASKED || still) return ASKED || REPOS[0];      // the pointer on THE WALL clicks whichever repository this gives, the first loop's too
       if (!shelf.length) { shelf.push(...REPOS); for (let i = shelf.length - 1; i > 0; i--) { const j = Math.floor(pick() * (i + 1)), o = shelf[i]; shelf[i] = shelf[j]; shelf[j] = o; } if (shelf[shelf.length - 1] === REPO && turns) { shelf[shelf.length - 1] = shelf[0]; shelf[0] = REPO; } }   // the one just shown goes to the bottom of the new bag
       return shelf.pop(); };
     const next = () => { let name = ASK.get('shape'); if (name && !SHAPES[name]) console.error(`no shape '${name}'; there are: ${Object.keys(SHAPES).join(', ')}`);
