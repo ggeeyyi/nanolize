@@ -6,7 +6,8 @@
 <meta name="robots" content="noindex">
 <title>Nanolize 标志候选</title>
 <style>
-/* Ten candidates (two batches of five) for the Nanolize mark in the homepage's top bar. This page only shows them: the homepage itself
+/* Candidates for the Nanolize mark in the homepage's top bar, newest batch first: five changes of detail for each of K to T,
+   the eight that make J-2's N into a thing (K to T), five small adjustments each of J and D, then the first ten (F to J, A to E). This page only shows them: the homepage itself
    is unchanged. The fonts and colours are the homepage's own (src/base.html, src/star/theme.css).
    Each candidate is written once, in a <template> at the end of the page, and the script stamps it wherever a
    data-mark attribute asks for it. Every mark is sized in em, so the same markup is the bar's size at 18px and
@@ -172,6 +173,24 @@ main{max-width:1180px;margin-inline:auto;padding:56px max(16px,3vw) 110px}
 .lg-d5 .pr{margin-right:.2em;color:var(--ink-3);font-family:var(--mono);font-weight:500;font-size:1.02em}
 @media (prefers-reduced-motion: reduce){.lg-d1 .cur,.lg-d2 .cur,.lg-d3 .cur,.lg-d5 .cur,.lg-d4 .inv{animation:none}}
 
+/* ============================== fourth batch: J-2's N made into a thing ==============================
+   The word and its weight are J-2's; only the N changes. K a rubber, L a rubber for the diagonal, M scissors, P a pencil,
+   Q the delete key, R a zip, S a folded strip, T a tick. (No N or O: they would read as the letter and as zero.) */
+.lg-k,.lg-l,.lg-m,.lg-p,.lg-q,.lg-r,.lg-s,.lg-t{gap:.48em}
+.lg-k .sym,.lg-l .sym,.lg-m .sym,.lg-p .sym,.lg-r .sym,.lg-s .sym,.lg-t .sym{width:1.3em;height:1.3em}
+.lg-q .sym{width:1.56em;height:1.3em}
+.lg-k .wm,.lg-l .wm,.lg-m .wm,.lg-p .wm,.lg-q .wm,.lg-r .wm,.lg-s .wm,.lg-t .wm{font-weight:700;letter-spacing:-.025em}
+.lg-k{gap:.6em}      /* room for the crumbs */
+.i96{font-size:66px!important}
+/* a card of this batch shows the symbol alone, large, above the whole mark */
+.vgrid.tall .v .big{gap:24px;padding:30px 12px 26px}
+
+/* ============================== fifth batch: five changes of detail for each of K to T ==============================
+   A change carries its letter's class as well as its own (class="mark lg-k lg-k1"), so the rules above still hold for it;
+   only the few that differ in size or spacing are set here. */
+.lg-k1{gap:.48em} .lg-k4{gap:.52em} .lg-l4{gap:.6em}
+.lg-q4 .sym{height:1.42em}
+
 /* how the adjustments are shown: the unchanged mark and its five adjustments, each as one card, then all six in the top bar */
 .vgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
 .v{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:18px;background:var(--card);overflow:hidden;min-width:0}
@@ -236,6 +255,106 @@ main{max-width:1180px;margin-inline:auto;padding:56px max(16px,3vw) 110px}
     <path d="M5.6 18.9V5.1l12.8 13.8V5.1" clip-path="url(#c-jr)" style="fill:none;stroke:currentColor;stroke-width:4.2;stroke-linejoin:round;stroke-linecap:round"/>
   </symbol>
 
+  <!-- ===== fourth batch: J-2's flat N made into a thing ===== -->
+  <!-- K: the N is a rubber: the green half is its paper sleeve, the white half the rubber, worn round at the foot, crumbs beside it -->
+  <symbol id="s-k" viewBox="0 0 24 24">
+    <defs><clipPath id="c-kl"><rect x="0" y="0" width="11.4" height="24"/></clipPath></defs>
+    <path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-kl)" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:1.4;stroke-linejoin:round"/>
+    <path d="M12.95 10.39L15.6 14.1V4h3.9v12.4a3.6 3.6 0 0 1-3.6 3.6h-.3l-2.65-3.71z" style="fill:currentColor;stroke:currentColor;stroke-width:.9;stroke-linejoin:round"/>
+    <g style="fill:currentColor"><circle cx="21.5" cy="20" r=".66"/><circle cx="23.2" cy="18.7" r=".44"/><circle cx="23.5" cy="20.4" r=".36"/></g>
+  </symbol>
+  <!-- L: three pieces: two thin stems, and for the diagonal a block of rubber, green sleeve above, pale tip below -->
+  <symbol id="s-l" viewBox="0 0 24 24">
+    <path d="M3.7 20L3.7 6.8L6.7 11.46L6.7 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.7;stroke-linejoin:round"/><path d="M17.3 4L20.3 4L20.3 17.2L17.3 12.54z" style="fill:currentColor;stroke:currentColor;stroke-width:0.7;stroke-linejoin:round"/>
+    <path d="M3.7 4L10 4L15.79 13L9.49 13z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:1.3;stroke-linejoin:round"/><path d="M10.72 14.9L17.02 14.9L20.3 20L14 20z" style="fill:var(--lime);stroke:var(--lime);stroke-width:1.3;stroke-linejoin:round"/>
+  </symbol>
+  <!-- M: scissors: the left stem and the diagonal are the two blades, pinned at the top left under two finger rings; the right stem stands by.
+       The rings rise above the box, so the N itself stays in line with the word beside it. -->
+  <symbol id="s-m" viewBox="0 0 24 24" style="overflow:visible">
+    <defs><mask id="m-m" maskUnits="userSpaceOnUse" x="-2" y="-5" width="28" height="30"><rect x="-2" y="-5" width="28" height="30" fill="#fff"/><circle cx="6.45" cy="6.6" r=".9" fill="#000"/></mask></defs>
+    <g mask="url(#m-m)"><path d="M4.5 4L8.4 4L8.4 20L4.5 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M4.5 4L8.4 4L14.2 12.36L14.2 17.98z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M7.4 4.3L8.75 1.7M5.5 4.3L4 2" style="fill:none;stroke:var(--green-f);stroke-width:1.8;stroke-linecap:round"/><circle cx="9.5" cy="0.1" r="2" style="fill:none;stroke:var(--green-f);stroke-width:1.5"/><circle cx="3.2" cy="0.5" r="2" style="fill:none;stroke:var(--green-f);stroke-width:1.5"/></g>
+    <path d="M15.6 4L19.5 4L19.5 20L15.6 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/>
+  </symbol>
+  <!-- P: three pieces: the diagonal is a pencil, rubber at the top, body, wood and point, the point on the baseline -->
+  <symbol id="s-p" viewBox="0 0 24 24" style="overflow:visible">
+    <path d="M4.5 20L4.5 6.5L8.4 12.12L8.4 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M15.6 4L19.5 4L19.5 17.5L15.6 11.88z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/>
+    <path d="M4.5 4L8.4 4L8.93 4.77L6.3 6.59z" style="fill:var(--lime);stroke:var(--lime);stroke-width:0.6;stroke-linejoin:round"/><path d="M6.97 7.55L9.6 5.73L15.54 14.29L12.9 16.11z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.6;stroke-linejoin:round"/><path d="M13.29 16.67L15.92 14.85L16.9 17.96L15.87 18.68z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M16.35 19.06L17.09 18.54L17.77 20.32z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.6;stroke-linejoin:round"/>
+  </symbol>
+  <!-- Q: the delete key: a tag pointing left, the N cut out of it -->
+  <symbol id="s-q" viewBox="0 2 24 20">
+    <defs><mask id="m-q" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="#fff"/><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" transform="translate(7.7 5.04) scale(.58)" fill="#000" stroke="#000" stroke-width=".9" stroke-linejoin="round"/></mask></defs>
+    <path d="M9 3.6H20.3a2.4 2.4 0 0 1 2.4 2.4V18a2.4 2.4 0 0 1-2.4 2.4H9a2.4 2.4 0 0 1-1.85-.87L1.6 12.95a1.5 1.5 0 0 1 0-1.9L7.15 4.47A2.4 2.4 0 0 1 9 3.6z" mask="url(#m-q)" style="fill:var(--green-f)"/>
+  </symbol>
+  <!-- R: zipped: the two halves meet along the middle of the diagonal in nine teeth; the slider and its pull are at the top left -->
+  <symbol id="s-r" viewBox="0 0 24 24" style="overflow:visible">
+    <path d="M19.5 20L19.5 4L15.6 4L15.6 14.38L8.4 4L6.45 4L5.94 4.35L7.17 6.13L8.19 5.42L9.43 7.2L8.41 7.91L9.64 9.69L10.66 8.98L11.89 10.76L10.87 11.46L12.11 13.24L13.13 12.54L14.36 14.31L13.34 15.02L14.57 16.8L15.59 16.09L16.83 17.87L15.81 18.58L17.04 20.35L17.55 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/>
+    <path d="M4.5 20L4.5 4L6.45 4L5.94 4.35L7.17 6.13L8.19 5.42L9.43 7.2L8.41 7.91L9.64 9.69L10.66 8.98L11.89 10.76L10.87 11.46L12.11 13.24L13.13 12.54L14.36 14.31L13.34 15.02L14.57 16.8L15.59 16.09L16.83 17.87L15.81 18.58L17.04 20.35L17.55 20L15.6 20L8.4 9.62L8.4 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/>
+    <g transform="translate(7.23 5.12) rotate(-35.3)"><rect x="-2.5" y="-2" width="5" height="3.6" rx="1" style="fill:var(--lime)"/><rect x="-.9" y="-5.4" width="1.8" height="3.9" rx=".9" style="fill:none;stroke:var(--lime);stroke-width:.8"/></g>
+  </symbol>
+  <!-- S: a strip folded twice: the green stems are its face, the white diagonal its back, lying over the stems and shading them.
+       The shade is black let through by a gradient, so it needs no colour of its own on either ground. -->
+  <symbol id="s-s" viewBox="0 0 24 24">
+    <defs><linearGradient id="g-sa" gradientUnits="userSpaceOnUse" x1="6.45" y1="6.81" x2="4.4" y2="8.23"><stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient><linearGradient id="g-sb" gradientUnits="userSpaceOnUse" x1="17.55" y1="17.19" x2="19.6" y2="15.77"><stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient></defs>
+    <path d="M4.5 20L4.5 4L8.4 9.62L8.4 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M15.6 4L19.5 4L19.5 20L15.6 14.38z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/>
+    <path d="M4.05 20L4.05 4L8.85 10.22L8.85 20z" fill="url(#g-sa)"/><path d="M15.15 4L19.95 4L19.95 20L15.15 13.78z" fill="url(#g-sb)"/>
+    <path d="M4.5 4L8.4 4L19.5 20L15.6 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/>
+  </symbol>
+  <!-- T: the cut crosses the diagonal squarely: the left piece is what was written, the right piece a tick -->
+  <symbol id="s-t" viewBox="0 0 24 24">
+    <path d="M4.5 20L4.5 4L8.4 4L12.1 9.33L9.46 11.15L8.4 9.62L8.4 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/>
+    <path d="M19.5 4L19.5 20L15.6 20L10.57 12.75L13.21 10.93L15.6 14.38L15.6 4z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/>
+  </symbol>
+
+  <!-- ===== fifth batch: five changes of detail for each of K to T (each is its letter's symbol with one or two things changed) ===== -->
+  <!-- K: K-1 不带橡皮屑; K-2 纸套镶边; K-3 纸套更长; K-4 擦短了; K-5 纸套斜着裁 -->
+  <symbol id="s-k1" viewBox="0 0 24 24"><defs><clipPath id="c-k1l"><path d="M0 0h11.4v24H0z"/></clipPath></defs><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-k1l)" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:1.4;stroke-linejoin:round"/><path d="M12.95 10.39L15.6 14.1V4h3.9v12.4a3.6 3.6 0 0 1-3.6 3.6h-.3l-2.65-3.71z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-k2" viewBox="0 0 24 24"><defs><clipPath id="c-k2l"><path d="M0 0h10.05v24H0z"/></clipPath><clipPath id="c-k2m"><path d="M10.05 0h1.35v24h-1.35z"/></clipPath></defs><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-k2l)" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:1.4;stroke-linejoin:round"/><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-k2m)" style="fill:var(--lime);stroke:var(--lime);stroke-width:1.4;stroke-linejoin:round"/><path d="M12.95 10.39L15.6 14.1V4h3.9v12.4a3.6 3.6 0 0 1-3.6 3.6h-.3l-2.65-3.71z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><g style="fill:currentColor"><circle cx="21.5" cy="20" r="0.66"/><circle cx="23.2" cy="18.7" r="0.44"/><circle cx="23.5" cy="20.4" r="0.36"/></g></symbol>
+  <symbol id="s-k3" viewBox="0 0 24 24"><defs><clipPath id="c-k3l"><path d="M0 0h14.5v24H0z"/></clipPath></defs><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-k3l)" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:1.4;stroke-linejoin:round"/><path d="M15.6 4h3.9v12.4a3.6 3.6 0 0 1-3.6 3.6h-.3z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><g style="fill:currentColor"><circle cx="21.5" cy="20" r="0.66"/><circle cx="23.2" cy="18.7" r="0.44"/><circle cx="23.5" cy="20.4" r="0.36"/></g></symbol>
+  <symbol id="s-k4" viewBox="0 0 24 24"><defs><clipPath id="c-k4l"><path d="M0 0h11.4v24H0z"/></clipPath></defs><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-k4l)" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:1.4;stroke-linejoin:round"/><path d="M12.95 10.39L15.6 14.1V4h3.9V15.4a2.5 2.5 0 0 1-2.5 2.5H14.1L12.95 16.29z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><g style="fill:currentColor"><circle cx="15.2" cy="20.05" r="0.6"/><circle cx="17.3" cy="20.3" r="0.42"/><circle cx="19.3" cy="19.8" r="0.52"/><circle cx="21.2" cy="20.35" r="0.34"/></g></symbol>
+  <symbol id="s-k5" viewBox="0 0 24 24"><defs><clipPath id="c-k5l"><path d="M0 0H12.75L9.75 24H0Z"/></clipPath><clipPath id="c-k5r"><path d="M13.9 0H25V25H10.9Z"/></clipPath></defs><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-k5l)" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:1.4;stroke-linejoin:round"/><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v12.4a3.6 3.6 0 0 1-3.6 3.6h-.3L8.4 9.9V20z" clip-path="url(#c-k5r)" style="fill:currentColor;stroke:currentColor;stroke-width:.9;stroke-linejoin:round"/><g style="fill:currentColor"><circle cx="21.5" cy="20" r="0.66"/><circle cx="23.2" cy="18.7" r="0.44"/><circle cx="23.5" cy="20.4" r="0.36"/></g></symbol>
+  <!-- L: L-1 三笔一样粗; L-2 纸套横着裹; L-3 三段; L-4 橡皮头磨圆; L-5 一整块橡皮 -->
+  <symbol id="s-l1" viewBox="0 0 24 24"><path d="M4.5 20L4.5 6.5L8.4 12.12L8.4 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M15.6 4L19.5 4L19.5 17.5L15.6 11.88z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M4.5 4L8.4 4L15.06 13.6L11.16 13.6z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.6;stroke-linejoin:round"/><path d="M11.92 14.7L15.82 14.7L19.5 20L15.6 20z" style="fill:var(--lime);stroke:var(--lime);stroke-width:0.6;stroke-linejoin:round"/></symbol>
+  <symbol id="s-l2" viewBox="0 0 24 24"><path d="M3.7 20L3.7 6.8L6.7 11.46L6.7 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.7;stroke-linejoin:round"/><path d="M17.3 4L20.3 4L20.3 17.2L17.3 12.54z" style="fill:currentColor;stroke:currentColor;stroke-width:0.7;stroke-linejoin:round"/><path d="M3.7 4L10 4L14.43 10.89L9.98 13.75z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:1.3;stroke-linejoin:round"/><path d="M11.16 15.59L15.62 12.73L20.3 20L14 20z" style="fill:var(--lime);stroke:var(--lime);stroke-width:1.3;stroke-linejoin:round"/></symbol>
+  <symbol id="s-l3" viewBox="0 0 24 24"><path d="M3.7 20L3.7 6.8L6.7 11.46L6.7 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.7;stroke-linejoin:round"/><path d="M17.3 4L20.3 4L20.3 17.2L17.3 12.54z" style="fill:currentColor;stroke:currentColor;stroke-width:0.7;stroke-linejoin:round"/><path d="M3.7 4L10 4L13.2 8.97L8.74 11.83z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:1.3;stroke-linejoin:round"/><path d="M9.69 13.31L14.14 10.44L14.69 11.29L10.24 14.15z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M11.16 15.59L15.62 12.73L20.3 20L14 20z" style="fill:var(--lime);stroke:var(--lime);stroke-width:1.3;stroke-linejoin:round"/></symbol>
+  <symbol id="s-l4" viewBox="0 0 24 24" style="overflow:visible"><path d="M3.7 20L3.7 6.8L6.7 11.46L6.7 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.7;stroke-linejoin:round"/><path d="M17.3 4L20.3 4L20.3 17.2L17.3 12.54z" style="fill:currentColor;stroke:currentColor;stroke-width:0.7;stroke-linejoin:round"/><path d="M3.7 4L10 4L15.79 13L9.49 13z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:1.3;stroke-linejoin:round"/><path d="M10.72 14.9L17.02 14.9L18.37 17Q20.3 20 17.400000000000002 20L14 20z" style="fill:var(--lime);stroke:var(--lime);stroke-width:1.3;stroke-linejoin:round"/><g style="fill:currentColor"><circle cx="21.2" cy="20" r="0.66"/><circle cx="22.9" cy="18.7" r="0.44"/><circle cx="23.3" cy="20.4" r="0.36"/></g></symbol>
+  <symbol id="s-l5" viewBox="0 0 24 24" style="overflow:visible"><path d="M3.7 20L3.7 6.8L6.7 11.46L6.7 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.7;stroke-linejoin:round"/><path d="M17.3 4L20.3 4L20.3 17.2L17.3 12.54z" style="fill:currentColor;stroke:currentColor;stroke-width:0.7;stroke-linejoin:round"/><path d="M4.69 5.12L8.76 2.5L14.03 10.69L9.97 13.31z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:1.75;stroke-linejoin:round"/><path d="M11.15 15.15L15.22 12.53L19.31 18.88L15.24 21.5z" style="fill:var(--lime);stroke:var(--lime);stroke-width:1.75;stroke-linejoin:round"/></symbol>
+  <!-- M: M-1 两片都削尖; M-2 两片两色; M-3 剪的是虚线; M-4 小指环; M-5 椭圆指环 -->
+  <symbol id="s-m1" viewBox="0 0 24 24" style="overflow:visible"><defs><mask id="m-m1" maskUnits="userSpaceOnUse" x="-3" y="-6" width="30" height="32"><rect x="-3" y="-6" width="30" height="32" fill="#fff"/><circle cx="6.45" cy="6.6" r=".9" fill="#000"/></mask></defs><g mask="url(#m-m1)"><path d="M4.5 4L8.4 4L8.4 20L4.5 17.3z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M4.5 4L8.4 4L14.2 12.36L14.2 17.98z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M7.4 4.3L8.75 1.7M5.5 4.3L4 2" style="fill:none;stroke:var(--green-f);stroke-width:1.8;stroke-linecap:round"/><circle cx="9.5" cy="0.1" r="2" style="fill:none;stroke:var(--green-f);stroke-width:1.5"/><circle cx="3.2" cy="0.5" r="2" style="fill:none;stroke:var(--green-f);stroke-width:1.5"/></g><path d="M15.6 4L19.5 4L19.5 20L15.6 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-m2" viewBox="0 0 24 24" style="overflow:visible"><defs><mask id="m-m2a" maskUnits="userSpaceOnUse" x="-3" y="-6" width="30" height="32"><rect x="-3" y="-6" width="30" height="32" fill="#fff"/><circle cx="6.45" cy="6.6" r=".9" fill="#000"/></mask><mask id="m-m2b" maskUnits="userSpaceOnUse" x="-3" y="-6" width="30" height="32"><rect x="-3" y="-6" width="30" height="32" fill="#fff"/><path d="M4.5 4L8.4 4L8.4 20L4.5 20z" fill="#000" stroke="#000" stroke-width="2" stroke-linejoin="round"/><path d="M7.4 4.3L8.75 1.7" stroke="#000" stroke-width="2.9" stroke-linecap="round"/><circle cx="9.5" cy=".1" r="2" fill="none" stroke="#000" stroke-width="2.6"/></mask></defs><g mask="url(#m-m2b)"><path d="M4.5 4L8.4 4L14.2 12.36L14.2 17.98z" style="fill:var(--lime);stroke:var(--lime);stroke-width:0.9;stroke-linejoin:round"/><path d="M5.5 4.3L4 2" style="fill:none;stroke:var(--lime);stroke-width:1.8;stroke-linecap:round"/><circle cx="3.2" cy="0.5" r="2" style="fill:none;stroke:var(--lime);stroke-width:1.5"/></g><g mask="url(#m-m2a)"><path d="M4.5 4L8.4 4L8.4 20L4.5 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M7.4 4.3L8.75 1.7" style="fill:none;stroke:var(--green-f);stroke-width:1.8;stroke-linecap:round"/><circle cx="9.5" cy="0.1" r="2" style="fill:none;stroke:var(--green-f);stroke-width:1.5"/></g><path d="M15.6 4L19.5 4L19.5 20L15.6 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-m3" viewBox="0 0 24 24" style="overflow:visible"><defs><mask id="m-m3" maskUnits="userSpaceOnUse" x="-3" y="-6" width="30" height="32"><rect x="-3" y="-6" width="30" height="32" fill="#fff"/><circle cx="6.45" cy="6.6" r=".9" fill="#000"/></mask></defs><g mask="url(#m-m3)"><path d="M4.5 4L8.4 4L8.4 20L4.5 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M4.5 4L8.4 4L14.2 12.36L14.2 17.98z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M7.4 4.3L8.75 1.7M5.5 4.3L4 2" style="fill:none;stroke:var(--green-f);stroke-width:1.8;stroke-linecap:round"/><circle cx="9.5" cy="0.1" r="2" style="fill:none;stroke:var(--green-f);stroke-width:1.5"/><circle cx="3.2" cy="0.5" r="2" style="fill:none;stroke:var(--green-f);stroke-width:1.5"/></g><rect x="15.6" y="4" width="3.9" height="2.6" style="fill:currentColor;stroke:currentColor;stroke-width:.9;stroke-linejoin:round"/><rect x="15.6" y="8.47" width="3.9" height="2.6" style="fill:currentColor;stroke:currentColor;stroke-width:.9;stroke-linejoin:round"/><rect x="15.6" y="12.93" width="3.9" height="2.6" style="fill:currentColor;stroke:currentColor;stroke-width:.9;stroke-linejoin:round"/><rect x="15.6" y="17.4" width="3.9" height="2.6" style="fill:currentColor;stroke:currentColor;stroke-width:.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-m4" viewBox="0 0 24 24" style="overflow:visible"><defs><mask id="m-m4" maskUnits="userSpaceOnUse" x="-3" y="-6" width="30" height="32"><rect x="-3" y="-6" width="30" height="32" fill="#fff"/><circle cx="6.45" cy="6.6" r=".9" fill="#000"/></mask></defs><g mask="url(#m-m4)"><path d="M4.5 4L8.4 4L8.4 20L4.5 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M4.5 4L8.4 4L14.2 12.36L14.2 17.98z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M7.3 4.4L8.2 3.4M5.6 4.4L4.7 3.5" style="fill:none;stroke:var(--green-f);stroke-width:1.6;stroke-linecap:round"/><circle cx="8.9" cy="2.0" r="1.5" style="fill:none;stroke:var(--green-f);stroke-width:1.3"/><circle cx="4.0" cy="2.2" r="1.5" style="fill:none;stroke:var(--green-f);stroke-width:1.3"/></g><path d="M15.6 4L19.5 4L19.5 20L15.6 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-m5" viewBox="0 0 24 24" style="overflow:visible"><defs><mask id="m-m5" maskUnits="userSpaceOnUse" x="-3" y="-6" width="30" height="32"><rect x="-3" y="-6" width="30" height="32" fill="#fff"/><circle cx="6.45" cy="6.6" r=".9" fill="#000"/></mask></defs><g mask="url(#m-m5)"><path d="M4.5 4L8.4 4L8.4 20L4.5 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M4.5 4L8.4 4L14.2 12.36L14.2 17.98z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M7.4 4.3L8.3 2.9M5.5 4.3L4.5 3.2" style="fill:none;stroke:var(--green-f);stroke-width:1.8;stroke-linecap:round"/><ellipse cx="10.4" cy="0.9" rx="1.55" ry="2.55" transform="rotate(50 10.4 0.9)" style="fill:none;stroke:var(--green-f);stroke-width:1.45"/><ellipse cx="2.2" cy="1.3" rx="1.55" ry="2.55" transform="rotate(-52 2.2 1.3)" style="fill:none;stroke:var(--green-f);stroke-width:1.45"/></g><path d="M15.6 4L19.5 4L19.5 20L15.6 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <!-- P: P-1 加一道金属箍; P-2 笔杆带高光; P-3 锯齿削口; P-4 白笔杆; P-5 两半各占一头 -->
+  <symbol id="s-p1" viewBox="0 0 24 24" style="overflow:visible"><path d="M4.5 20L4.5 6.5L8.4 12.12L8.4 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M15.6 4L19.5 4L19.5 17.5L15.6 11.88z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M4.5 4L8.4 4L8.65 4.37L6.02 6.19z" style="fill:var(--lime);stroke:var(--lime);stroke-width:0.6;stroke-linejoin:round"/><path d="M6.65 7.11L9.29 5.28L9.82 6.05L7.19 7.87z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M7.82 8.79L10.45 6.96L15.54 14.29L12.9 16.11z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.6;stroke-linejoin:round"/><path d="M13.29 16.67L15.92 14.85L16.9 17.96L15.87 18.68z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M16.35 19.06L17.09 18.54L17.77 20.32z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.6;stroke-linejoin:round"/></symbol>
+  <symbol id="s-p2" viewBox="0 0 24 24" style="overflow:visible"><path d="M4.5 20L4.5 6.5L8.4 12.12L8.4 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M15.6 4L19.5 4L19.5 17.5L15.6 11.88z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M4.5 4L8.4 4L8.93 4.77L6.3 6.59z" style="fill:var(--lime);stroke:var(--lime);stroke-width:0.6;stroke-linejoin:round"/><path d="M6.97 7.55L9.6 5.73L15.54 14.29L12.9 16.11z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.6;stroke-linejoin:round"/><path d="M8.54 6.46L9.6 5.73L15.54 14.29L14.48 15.02z" style="fill:var(--lime);stroke:var(--lime);stroke-width:0.6;stroke-linejoin:round"/><path d="M13.29 16.67L15.92 14.85L16.9 17.96L15.87 18.68z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M16.35 19.06L17.09 18.54L17.77 20.32z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.6;stroke-linejoin:round"/></symbol>
+  <symbol id="s-p3" viewBox="0 0 24 24" style="overflow:visible"><path d="M4.5 20L4.5 6.5L8.4 12.12L8.4 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M15.6 4L19.5 4L19.5 17.5L15.6 11.88z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M4.5 4L8.4 4L8.93 4.77L6.3 6.59z" style="fill:var(--lime);stroke:var(--lime);stroke-width:0.6;stroke-linejoin:round"/><path d="M12.57 15.63L15.2 13.81L15.92 14.85L16.9 17.96L15.87 18.68L13.29 16.67z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M6.97 7.55L9.6 5.73L15.37 14.05L15.54 15.23L14.49 14.66L14.66 15.84L13.61 15.26L13.79 16.45L12.74 15.87z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.6;stroke-linejoin:round"/><path d="M16.35 19.06L17.09 18.54L17.77 20.32z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.6;stroke-linejoin:round"/></symbol>
+  <symbol id="s-p4" viewBox="0 0 24 24" style="overflow:visible"><path d="M4.5 20L4.5 6.5L8.4 12.12L8.4 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.6;stroke-linejoin:round"/><path d="M15.6 4L19.5 4L19.5 17.5L15.6 11.88z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.6;stroke-linejoin:round"/><path d="M4.5 4L8.4 4L8.93 4.77L6.3 6.59z" style="fill:var(--lime);stroke:var(--lime);stroke-width:0.6;stroke-linejoin:round"/><path d="M6.97 7.55L9.6 5.73L15.54 14.29L12.9 16.11z" style="fill:currentColor;stroke:currentColor;stroke-width:0.6;stroke-linejoin:round"/><path d="M13.29 16.67L15.92 14.85L16.9 17.96L15.87 18.68z" style="fill:var(--lime);stroke:var(--lime);stroke-width:0.6;stroke-linejoin:round"/><path d="M16.35 19.06L17.09 18.54L17.77 20.32z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.6;stroke-linejoin:round"/></symbol>
+  <symbol id="s-p5" viewBox="0 0 24 24" style="overflow:visible"><path d="M4.5 14.9V4h3.9l2.65 3.72V13.6L8.4 9.9V14.9z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><rect x="4.05" y="16" width="4.8" height=".9" rx=".2" style="fill:var(--green-f)"/><path d="M4.5 18h3.9v.9a1.1 1.1 0 0 1-1.1 1.1h-1.7a1.1 1.1 0 0 1-1.1-1.1z" style="fill:var(--lime);stroke:var(--lime);stroke-width:0.9;stroke-linejoin:round"/><path d="M12.95 10.39L15.6 14.1V8.6h3.9V20h-3.9l-2.65-3.71z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><path d="M15.6 7.5L16.75 4.9h1.6l1.15 2.6z" style="fill:var(--lime);stroke:var(--lime);stroke-width:0.9;stroke-linejoin:round"/><path d="M17 3.9L17.55 2.7l.55 1.2z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <!-- Q: Q-1 线框; Q-2 白键绿字; Q-3 棱角; Q-4 有厚度的键帽; Q-5 只留尖角 -->
+  <symbol id="s-q1" viewBox="0 2 24 20"><path d="M9 3.6H20.3a2.4 2.4 0 0 1 2.4 2.4V18a2.4 2.4 0 0 1-2.4 2.4H9a2.4 2.4 0 0 1-1.85-.87L1.6 12.95a1.5 1.5 0 0 1 0-1.9L7.15 4.47A2.4 2.4 0 0 1 9 3.6z" style="fill:none;stroke:currentColor;stroke-width:1.5"/><defs><clipPath id="c-q1l"><path d="M0 0h11.05v24H0z"/></clipPath><clipPath id="c-q1r"><path d="M12.95 0h12v24h-12z"/></clipPath></defs><g transform="translate(7.7 5.04) scale(.58)"><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-q1l)" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:.9;stroke-linejoin:round"/><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-q1r)" style="fill:currentColor;stroke:currentColor;stroke-width:.9;stroke-linejoin:round"/></g></symbol>
+  <symbol id="s-q2" viewBox="0 2 24 20"><path d="M9 3.6H20.3a2.4 2.4 0 0 1 2.4 2.4V18a2.4 2.4 0 0 1-2.4 2.4H9a2.4 2.4 0 0 1-1.85-.87L1.6 12.95a1.5 1.5 0 0 1 0-1.9L7.15 4.47A2.4 2.4 0 0 1 9 3.6z" style="fill:currentColor"/><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" transform="translate(7.7 5.04) scale(.58)" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-q3" viewBox="0 2 24 20"><defs><mask id="m-q3" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect y="0" width="24" height="24" fill="#fff"/><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" transform="translate(7.7 5.04) scale(.58)" fill="#000" stroke="#000" stroke-width=".9" stroke-linejoin="round"/></mask></defs><path d="M8.3 4.1L22.2 4.1L22.2 19.9L8.3 19.9L1.7 12z" mask="url(#m-q3)" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:1;stroke-linejoin:round"/></symbol>
+  <symbol id="s-q4" viewBox="0 2 24 21.9"><defs><mask id="m-q4" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="26"><rect y="0" width="24" height="26" fill="#fff"/><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" transform="translate(7.7 5.04) scale(.58)" fill="#000" stroke="#000" stroke-width=".9" stroke-linejoin="round"/></mask></defs><g mask="url(#m-q4)"><path d="M9 3.6H20.3a2.4 2.4 0 0 1 2.4 2.4V18a2.4 2.4 0 0 1-2.4 2.4H9a2.4 2.4 0 0 1-1.85-.87L1.6 12.95a1.5 1.5 0 0 1 0-1.9L7.15 4.47A2.4 2.4 0 0 1 9 3.6z" transform="translate(0 1.9)" style="fill:var(--green-f)"/><path d="M9 3.6H20.3a2.4 2.4 0 0 1 2.4 2.4V18a2.4 2.4 0 0 1-2.4 2.4H9a2.4 2.4 0 0 1-1.85-.87L1.6 12.95a1.5 1.5 0 0 1 0-1.9L7.15 4.47A2.4 2.4 0 0 1 9 3.6z" transform="translate(0 1.9)" fill="#000" fill-opacity=".45"/><path d="M9 3.6H20.3a2.4 2.4 0 0 1 2.4 2.4V18a2.4 2.4 0 0 1-2.4 2.4H9a2.4 2.4 0 0 1-1.85-.87L1.6 12.95a1.5 1.5 0 0 1 0-1.9L7.15 4.47A2.4 2.4 0 0 1 9 3.6z" style="fill:var(--green-f)"/></g></symbol>
+  <symbol id="s-q5" viewBox="-3.4 2 24 20"><defs><clipPath id="c-q5l"><path d="M0 0h11.05v24H0z"/></clipPath><clipPath id="c-q5r"><path d="M12.95 0h12v24h-12z"/></clipPath></defs><path d="M2.6 4.3L-1.9 12l4.5 7.7" style="fill:none;stroke:var(--green-f);stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round"/><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-q5l)" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:.9;stroke-linejoin:round"/><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-q5r)" style="fill:currentColor;stroke:currentColor;stroke-width:.9;stroke-linejoin:round"/></symbol>
+  <!-- R: R-1 不带拉头; R-2 大链牙; R-3 尖牙; R-4 拉到一半; R-5 链牙单独上色 -->
+  <symbol id="s-r1" viewBox="0 0 24 24"><path d="M19.5 20L19.5 4L15.6 4L15.6 14.38L8.4 4L6.45 4L5.94 4.35L7.17 6.13L8.19 5.42L9.43 7.2L8.41 7.91L9.64 9.69L10.66 8.98L11.89 10.76L10.87 11.46L12.11 13.24L13.13 12.54L14.36 14.31L13.34 15.02L14.57 16.8L15.59 16.09L16.83 17.87L15.81 18.58L17.04 20.35L17.55 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><path d="M4.5 20L4.5 4L6.45 4L5.94 4.35L7.17 6.13L8.19 5.42L9.43 7.2L8.41 7.91L9.64 9.69L10.66 8.98L11.89 10.76L10.87 11.46L12.11 13.24L13.13 12.54L14.36 14.31L13.34 15.02L14.57 16.8L15.59 16.09L16.83 17.87L15.81 18.58L17.04 20.35L17.55 20L15.6 20L8.4 9.62L8.4 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-r2" viewBox="0 0 24 24" style="overflow:visible"><path d="M19.5 20L19.5 4L15.6 4L15.6 14.38L8.4 4L6.45 4L5.71 4.51L7.93 7.71L9.41 6.69L11.63 9.89L10.15 10.91L12.37 14.11L13.85 13.09L16.07 16.29L14.59 17.31L16.81 20.51L17.55 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><path d="M4.5 20L4.5 4L6.45 4L5.71 4.51L7.93 7.71L9.41 6.69L11.63 9.89L10.15 10.91L12.37 14.11L13.85 13.09L16.07 16.29L14.59 17.31L16.81 20.51L17.55 20L15.6 20L8.4 9.62L8.4 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><g transform="translate(7.23 5.12) rotate(-35.3)"><rect x="-2.5" y="-2" width="5" height="3.6" rx="1" style="fill:var(--lime)"/><rect x="-.9" y="-5.4" width="1.8" height="3.9" rx=".9" style="fill:none;stroke:var(--lime);stroke-width:.8"/></g></symbol>
+  <symbol id="s-r3" viewBox="0 0 24 24" style="overflow:visible"><path d="M19.5 20L19.5 4L15.6 4L15.6 14.38L8.4 4L6.45 4L6.45 4L6.26 5.21L8.66 5.7L8.27 8.12L10.68 8.61L10.29 11.03L12.7 11.52L12.31 13.94L14.72 14.42L14.33 16.85L16.73 17.33L16.35 19.76L17.55 20L17.55 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><path d="M4.5 20L4.5 4L6.45 4L6.45 4L6.26 5.21L8.66 5.7L8.27 8.12L10.68 8.61L10.29 11.03L12.7 11.52L12.31 13.94L14.72 14.42L14.33 16.85L16.73 17.33L16.35 19.76L17.55 20L17.55 20L15.6 20L8.4 9.62L8.4 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><g transform="translate(7.23 5.12) rotate(-35.3)"><rect x="-2.5" y="-2" width="5" height="3.6" rx="1" style="fill:var(--lime)"/><rect x="-.9" y="-5.4" width="1.8" height="3.9" rx=".9" style="fill:none;stroke:var(--lime);stroke-width:.8"/></g></symbol>
+  <symbol id="s-r4" viewBox="0 0 24 24" style="overflow:visible"><path d="M19.5 20L19.5 4L15.6 4L15.6 14.38L8.4 4L7.3 4L10.89 10.4L11.16 11.87L12.33 13.57L13.35 12.86L14.53 14.56L13.51 15.27L14.69 16.96L15.71 16.25L16.88 17.95L15.86 18.66L17.04 20.35L17.55 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><path d="M4.5 20L4.5 4L5.45 4L10.89 10.4L11.16 11.87L12.33 13.57L13.35 12.86L14.53 14.56L13.51 15.27L14.69 16.96L15.71 16.25L16.88 17.95L15.86 18.66L17.04 20.35L17.55 20L15.6 20L8.4 9.62L8.4 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><g transform="translate(11.28 10.96) rotate(-35.3)"><path d="M-2.3 -1.9h4.6l-.7 3.8h-3.2z" style="fill:var(--lime);stroke:var(--lime);stroke-width:.9;stroke-linejoin:round"/><rect x="-.9" y="2.3" width="1.8" height="3.7" rx=".9" style="fill:none;stroke:var(--lime);stroke-width:.8"/></g></symbol>
+  <symbol id="s-r5" viewBox="0 0 24 24"><path d="M19.5 20L19.5 4L15.6 4L15.6 14.38L8.4 4L7.67 4L18.77 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><path d="M4.5 20L4.5 4L5.23 4L16.33 20L15.6 20L8.4 9.62L8.4 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><g style="fill:var(--lime)"><path d="M5.7 4.28L6.98 3.4L7.49 4.13L6.21 5.02z"/><path d="M6.72 5.76L8.01 4.88L8.52 5.61L7.24 6.5z"/><path d="M7.75 7.24L9.03 6.36L9.54 7.09L8.26 7.98z"/><path d="M8.78 8.72L10.06 7.84L10.57 8.57L9.29 9.46z"/><path d="M9.81 10.2L11.09 9.32L11.6 10.05L10.32 10.94z"/><path d="M10.83 11.68L12.11 10.8L12.62 11.53L11.34 12.42z"/><path d="M11.86 13.16L13.14 12.28L13.65 13.01L12.37 13.9z"/><path d="M12.89 14.64L14.17 13.76L14.68 14.49L13.4 15.38z"/><path d="M13.91 16.12L15.19 15.24L15.7 15.97L14.42 16.86z"/><path d="M14.94 17.6L16.22 16.72L16.73 17.45L15.45 18.34z"/><path d="M15.97 19.08L17.25 18.2L17.76 18.93L16.48 19.82z"/></g></symbol>
+  <!-- S: S-1 白带绿面; S-2 不用渐变; S-3 全绿; S-4 折出斜角; S-5 细带子 -->
+  <symbol id="s-s1" viewBox="0 0 24 24"><defs><linearGradient id="g-s1a" gradientUnits="userSpaceOnUse" x1="6.45" y1="6.81" x2="4.4" y2="8.23"><stop offset="0" stop-color="#000" stop-opacity="0.4"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient><linearGradient id="g-s1b" gradientUnits="userSpaceOnUse" x1="17.55" y1="17.19" x2="19.6" y2="15.77"><stop offset="0" stop-color="#000" stop-opacity="0.4"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient></defs><path d="M4.5 20L4.5 4L8.4 9.62L8.4 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><path d="M15.6 4L19.5 4L19.5 20L15.6 14.38z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><path d="M4.05 20L4.05 4L8.85 10.22L8.85 20z" fill="url(#g-s1a)"/><path d="M15.15 4L19.95 4L19.95 20L15.15 13.78z" fill="url(#g-s1b)"/><path d="M4.5 4L8.4 4L19.5 20L15.6 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-s2" viewBox="0 0 24 24"><path d="M4.5 20L4.5 4L8.4 9.62L8.4 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M15.6 4L19.5 4L19.5 20L15.6 14.38z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M4.05 3.8L8.85 10.07L8.85 12.72L4.05 6.45z" fill="#000" fill-opacity=".34"/><path d="M15.15 13.93L19.95 20.2L19.95 17.55L15.15 11.28z" fill="#000" fill-opacity=".34"/><path d="M4.5 4L8.4 4L19.5 20L15.6 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-s3" viewBox="0 0 24 24"><defs><linearGradient id="g-s3a" gradientUnits="userSpaceOnUse" x1="6.45" y1="6.81" x2="4.4" y2="8.23"><stop offset="0" stop-color="#000" stop-opacity="0.5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient><linearGradient id="g-s3b" gradientUnits="userSpaceOnUse" x1="17.55" y1="17.19" x2="19.6" y2="15.77"><stop offset="0" stop-color="#000" stop-opacity="0.5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient></defs><path d="M4.5 20L4.5 4L8.4 9.62L8.4 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M15.6 4L19.5 4L19.5 20L15.6 14.38z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M4.05 20L4.05 4L8.85 10.22L8.85 20z" fill="url(#g-s3a)"/><path d="M15.15 4L19.95 4L19.95 20L15.15 13.78z" fill="url(#g-s3b)"/><path d="M4.5 4L8.4 4L19.5 20L15.6 20z" style="fill:var(--lime);stroke:var(--lime);stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-s4" viewBox="0 0 24 24"><defs><linearGradient id="g-s4a" gradientUnits="userSpaceOnUse" x1="6.45" y1="7.882432432432433" x2="4.454896577672603" y2="9.388939098271488"><stop offset="0" stop-color="#000" stop-opacity="0.5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient><linearGradient id="g-s4b" gradientUnits="userSpaceOnUse" x1="17.55" y1="16.117567567567566" x2="19.545103422327397" y2="14.61106090172851"><stop offset="0" stop-color="#000" stop-opacity="0.5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient></defs><path d="M4.5 20L4.5 5.3L8.4 4L8.4 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M15.6 4L19.5 4L19.5 18.7L15.6 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M4.05 20L4.05 5.3L8.85 11.06L8.85 20z" fill="url(#g-s4a)"/><path d="M15.15 4L19.95 4L19.95 18.7L15.15 12.94z" fill="url(#g-s4b)"/><path d="M4.5 5.3L8.4 4L19.5 18.7L15.6 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-s5" viewBox="0 0 24 24"><defs><linearGradient id="g-s5a" gradientUnits="userSpaceOnUse" x1="6.5" y1="7.045454545454545" x2="4.483987510360736" y2="8.52386370452334"><stop offset="0" stop-color="#000" stop-opacity="0.5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient><linearGradient id="g-s5b" gradientUnits="userSpaceOnUse" x1="17.5" y1="16.954545454545453" x2="19.516012489639266" y2="15.47613629547666"><stop offset="0" stop-color="#000" stop-opacity="0.5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient></defs><path d="M5 20L5 5L8 4L8 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M16 4L19 4L19 19L16 20z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><path d="M4.55 20L4.55 5L8.45 9.69L8.45 20z" fill="url(#g-s5a)"/><path d="M15.55 4L19.45 4L19.45 19L15.55 14.31z" fill="url(#g-s5b)"/><path d="M5 5L8 4L19 19L16 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <!-- T: T-1 对勾出头; T-2 短钩; T-3 竖切口; T-4 圆头; T-5 左半只留轮廓 -->
+  <symbol id="s-t1" viewBox="0 0 24 24" style="overflow:visible"><path d="M4.5 20L4.5 4L8.4 4L12.1 9.33L9.46 11.15L8.4 9.62L8.4 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><path d="M19.5 1.9L19.5 20L15.6 20L10.57 12.75L13.21 10.93L15.6 14.38L15.6 1.9z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-t2" viewBox="0 0 24 24"><path d="M4.5 20L4.5 4L8.4 4L13.54 11.41L10.91 13.23L8.4 9.62L8.4 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><path d="M19.5 4L19.5 20L15.6 20L12.02 14.83L14.65 13.01L15.6 14.38L15.6 4z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-t3" viewBox="0 0 24 24"><defs><clipPath id="c-t3l"><path d="M0 0h11.05v24H0z"/></clipPath><clipPath id="c-t3r"><path d="M12.95 0h12v24h-12z"/></clipPath></defs><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-t3l)" style="fill:currentColor;stroke:currentColor;stroke-width:.9;stroke-linejoin:round"/><path d="M4.5 20V4h3.9l7.2 10.1V4h3.9v16h-3.9L8.4 9.9V20z" clip-path="url(#c-t3r)" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:.9;stroke-linejoin:round"/></symbol>
+  <symbol id="s-t4" viewBox="0 0 24 24"><path d="M4.5 20L4.5 4L8.4 4L12.1 9.33L9.46 11.15L8.4 9.62L8.4 20z" style="fill:currentColor;stroke:currentColor;stroke-width:0.9;stroke-linejoin:round"/><path d="M19.5 5.95L19.5 20L15.6 20L11.74 14.43L14.37 12.61L15.6 14.38L15.6 5.95z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/><circle cx="13.05" cy="13.52" r="2.05" style="fill:var(--green-f)"/><circle cx="17.55" cy="5.95" r="2.4" style="fill:var(--green-f)"/></symbol>
+  <symbol id="s-t5" viewBox="0 0 24 24"><path d="M4.5 20L4.5 4L8.4 4L12.1 9.33L9.46 11.15L8.4 9.62L8.4 20z" style="fill:none;stroke:currentColor;stroke-width:1.15;stroke-linejoin:round"/><path d="M19.5 4L19.5 20L15.6 20L10.57 12.75L13.21 10.93L15.6 14.38L15.6 4z" style="fill:var(--green-f);stroke:var(--green-f);stroke-width:0.9;stroke-linejoin:round"/></symbol>
+
   <!-- ===== third batch: J with one or two things changed at a time ===== -->
   <!-- J-1: a lighter stroke (3.4 for 4.2) -->
   <symbol id="s-j1" viewBox="0 0 24 24">
@@ -283,15 +402,90 @@ main{max-width:1180px;margin-inline:auto;padding:56px max(16px,3vw) 110px}
 
 <main>
   <header class="top">
-    <p class="m">nanolize homepage · 左上角的标志 · 10 个候选</p>
+    <p class="m">nanolize homepage · 左上角的标志 · 18 个候选，另有 50 个细节上的变化</p>
     <h1>Nanolize 标志候选</h1>
-    <p>十个方向不同的标志，文字都是 “Nanolize”，字体和颜色都取自主页本身。最前面是选中的 J 和 D 各五个微调版，然后是 F 到 J，最后是 A 到 E。每个候选依次放在主页的导航条里、放大、放在浅色底上，并缩到小图标的尺寸。主页还没有改动，选定之后再替换。</p>
+    <p>文字都是 “Nanolize”，字体和颜色都取自主页本身。最前面是新的一批：K 到 T 这八个方向各试五种细节，共 40 个；然后是这八个方向的总览，J 和 D 各五个微调版，F 到 J，最后是 A 到 E。每个候选都放进主页的导航条、放大、放在浅色底上，并缩到小图标的尺寸。主页还没有改动，选定之后再替换。</p>
     <nav class="jump" aria-label="候选">
-      <a href="#jx"><b>J×5</b>J 的微调</a><a href="#dx"><b>D×5</b>D 的微调</a><a href="#f"><b>F</b>向内的箭头</a><a href="#g"><b>G</b>功能图</a><a href="#h"><b>H</b>token 点阵</a><a href="#i"><b>I</b>留下的 token</a><a href="#j"><b>J</b>互不相见的两半</a><a href="#a"><b>A</b>星座 N</a><a href="#b"><b>B</b>旋涡星系</a><a href="#c"><b>C</b>星点 i</a><a href="#d"><b>D</b>终端光标</a><a href="#e"><b>E</b>半满的 N</a><a href="#now"><b>0</b>现在的标志</a>
+      <a href="#kv"><b>K×5</b>N 形的橡皮</a><a href="#lv"><b>L×5</b>斜笔是橡皮</a><a href="#mv"><b>M×5</b>剪刀</a><a href="#pv"><b>P×5</b>铅笔</a><a href="#qv"><b>Q×5</b>退格键</a><a href="#rv"><b>R×5</b>拉链</a><a href="#sv"><b>S×5</b>对折</a><a href="#tv"><b>T×5</b>对勾</a><a href="#kx"><b>K–T</b>八个方向总览</a><a href="#jx"><b>J×5</b>J 的微调</a><a href="#dx"><b>D×5</b>D 的微调</a><a href="#f"><b>F</b>向内的箭头</a><a href="#g"><b>G</b>功能图</a><a href="#h"><b>H</b>token 点阵</a><a href="#i"><b>I</b>留下的 token</a><a href="#j"><b>J</b>互不相见的两半</a><a href="#a"><b>A</b>星座 N</a><a href="#b"><b>B</b>旋涡星系</a><a href="#c"><b>C</b>星点 i</a><a href="#d"><b>D</b>终端光标</a><a href="#e"><b>E</b>半满的 N</a><a href="#now"><b>0</b>现在的标志</a>
     </nav>
   </header>
 
-  <div class="batch" id="batch3" style="margin-top:72px">
+  <div class="batch" id="batch5" style="margin-top:72px">
+    <p class="m">第五批 · K 到 T 各五个细节变化</p>
+    <h2>同一个想法，换五种画法</h2>
+    <p>上一批的八个方向，每个再试五种细节：有的减掉一样东西，有的加上一样，有的换颜色或比例，有的把同一件东西换个画法。大样都没有动：橡皮还是橡皮，剪刀还是剪刀。每组第一张是原样，后面五张各写明改了什么；卡片下面把六个依次放进主页的导航条。</p>
+  </div>
+
+  <section class="cand" id="kv" style="margin-top:44px">
+    <h2><b>K</b>N 形的橡皮<span>原样和五个细节变化 · DM Sans 700</span></h2>
+    <p class="why">不动的部分：J-2 的两半，绿色的一半是纸套，白色的一半是橡皮，底角擦圆。</p>
+    <div class="vgrid tall" data-variants="kv"></div>
+    <div class="frame stack" data-bars="kv"></div>
+  </section>
+
+  <section class="cand" id="lv">
+    <h2><b>L</b>斜笔是一块橡皮<span>原样和五个细节变化 · DM Sans 700</span></h2>
+    <p class="why">不动的部分：N 拆成两竖和一块斜放的橡皮，橡皮是两色的。</p>
+    <div class="vgrid tall" data-variants="lv"></div>
+    <div class="frame stack" data-bars="lv"></div>
+  </section>
+
+  <section class="cand" id="mv">
+    <h2><b>M</b>剪刀<span>原样和五个细节变化 · DM Sans 700</span></h2>
+    <p class="why">不动的部分：左竖和斜笔是两片刀刃，左上角有轴钉和两个指环，白色的右竖是正要剪的那一条。</p>
+    <div class="vgrid tall" data-variants="mv"></div>
+    <div class="frame stack" data-bars="mv"></div>
+  </section>
+
+  <section class="cand" id="pv">
+    <h2><b>P</b>铅笔<span>原样和五个细节变化 · DM Sans 700</span></h2>
+    <p class="why">不动的部分：N 的斜笔是一支铅笔，一头是橡皮，一头是笔尖。</p>
+    <div class="vgrid tall" data-variants="pv"></div>
+    <div class="frame stack" data-bars="pv"></div>
+  </section>
+
+  <section class="cand" id="qv">
+    <h2><b>Q</b>退格键<span>原样和五个细节变化 · DM Sans 700</span></h2>
+    <p class="why">不动的部分：一枚尖角朝左的退格键，键面上是 N。</p>
+    <div class="vgrid tall" data-variants="qv"></div>
+    <div class="frame stack" data-bars="qv"></div>
+  </section>
+
+  <section class="cand" id="rv">
+    <h2><b>R</b>拉链<span>原样和五个细节变化 · DM Sans 700</span></h2>
+    <p class="why">不动的部分：N 沿斜笔分成绿白两半，中间用链牙咬合。</p>
+    <div class="vgrid tall" data-variants="rv"></div>
+    <div class="frame stack" data-bars="rv"></div>
+  </section>
+
+  <section class="cand" id="sv">
+    <h2><b>S</b>对折<span>原样和五个细节变化 · DM Sans 700</span></h2>
+    <p class="why">不动的部分：一条带子折两折成 N，两竖是正面，斜笔是翻过来的背面。</p>
+    <div class="vgrid tall" data-variants="sv"></div>
+    <div class="frame stack" data-bars="sv"></div>
+  </section>
+
+  <section class="cand" id="tv">
+    <h2><b>T</b>对勾<span>原样和五个细节变化 · DM Sans 700</span></h2>
+    <p class="why">不动的部分：N 在斜笔上切开，左半是写下的代码，右半是一个绿色的对勾。</p>
+    <div class="vgrid tall" data-variants="tv"></div>
+    <div class="frame stack" data-bars="tv"></div>
+  </section>
+
+  <div class="batch" id="batch4">
+    <p class="m">第四批 · 从 J-2 出发</p>
+    <h2>让 N 像一件东西</h2>
+    <p>J-2 的平头粗体 N 和旁边的文字都不动，只改 N 本身，让它看上去是一件和 nanolize 做的事有关的东西：擦、剪、重写、删、压缩、对折、验收。第一张是 J-2 原样，放在一起比。每张卡片上面是单独的图形，下面是完整的标志，最下一行是 16、32 像素的图标、小号的标志和浅色底。编号跳过了 N 和 O，免得和字母 N、数字 0 弄混。</p>
+  </div>
+
+  <section class="cand" id="kx">
+    <h2><b>K–T</b>像一件东西的 N<span>J-2 原样和八个新方向 · DM Sans 700</span></h2>
+    <p class="why">K、L 是橡皮，M 是剪刀，P 是铅笔，Q 是退格键，R 是拉链，S 是对折的带子，T 是对勾。细节（指环、链牙、橡皮屑）在 32 像素以下会糊掉，但每一个缩小后仍然是一个两色的 N。</p>
+    <div class="vgrid tall" data-variants="k"></div>
+    <div class="frame stack" data-bars="k"></div>
+  </section>
+
+  <div class="batch" id="batch3">
     <p class="m">第三批 · J 和 D 的微调</p>
     <h2>大样不动，每次只改一两处</h2>
     <p>选中的两个方向各做五个微调版。每张卡片写明相对原样改了什么；第一张是原样，放在一起比。卡片下面把六个依次放进主页的导航条，那是它们真正要待的地方。</p>
@@ -434,6 +628,102 @@ main{max-width:1180px;margin-inline:auto;padding:56px max(16px,3vw) 110px}
 <template id="ico-d4"><span class="ico lg-d4"><span class="wm" aria-hidden="true"><span class="inv">N</span></span></span></template>
 <template id="mark-d5"><a class="mark lg-d5" href="#d5" aria-label="Nanolize"><span class="pr" aria-hidden="true">›</span><span class="wm">Nanolize</span><i class="cur" aria-hidden="true"></i></a></template>
 <template id="ico-d5"><span class="ico lg-d5"><span class="wm" aria-hidden="true">N</span><i class="cur"></i></span></template>
+<template id="mark-k"><a class="mark lg-k" href="#k" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-k"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-k"><span class="ico lg-k"><svg class="sym" aria-hidden="true"><use href="#s-k"/></svg></span></template>
+<template id="mark-l"><a class="mark lg-l" href="#l" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-l"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-l"><span class="ico lg-l"><svg class="sym" aria-hidden="true"><use href="#s-l"/></svg></span></template>
+<template id="mark-m"><a class="mark lg-m" href="#m" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-m"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-m"><span class="ico lg-m"><svg class="sym" aria-hidden="true"><use href="#s-m"/></svg></span></template>
+<template id="mark-p"><a class="mark lg-p" href="#p" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-p"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-p"><span class="ico lg-p"><svg class="sym" aria-hidden="true"><use href="#s-p"/></svg></span></template>
+<template id="mark-q"><a class="mark lg-q" href="#q" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-q"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-q"><span class="ico lg-q"><svg class="sym" aria-hidden="true"><use href="#s-q"/></svg></span></template>
+<template id="mark-r"><a class="mark lg-r" href="#r" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-r"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-r"><span class="ico lg-r"><svg class="sym" aria-hidden="true"><use href="#s-r"/></svg></span></template>
+<template id="mark-s"><a class="mark lg-s" href="#s" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-s"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-s"><span class="ico lg-s"><svg class="sym" aria-hidden="true"><use href="#s-s"/></svg></span></template>
+<template id="mark-t"><a class="mark lg-t" href="#t" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-t"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-t"><span class="ico lg-t"><svg class="sym" aria-hidden="true"><use href="#s-t"/></svg></span></template>
+<template id="mark-k1"><a class="mark lg-k lg-k1" href="#k1" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-k1"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-k1"><span class="ico lg-k lg-k1"><svg class="sym" aria-hidden="true"><use href="#s-k1"/></svg></span></template>
+<template id="mark-k2"><a class="mark lg-k lg-k2" href="#k2" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-k2"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-k2"><span class="ico lg-k lg-k2"><svg class="sym" aria-hidden="true"><use href="#s-k2"/></svg></span></template>
+<template id="mark-k3"><a class="mark lg-k lg-k3" href="#k3" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-k3"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-k3"><span class="ico lg-k lg-k3"><svg class="sym" aria-hidden="true"><use href="#s-k3"/></svg></span></template>
+<template id="mark-k4"><a class="mark lg-k lg-k4" href="#k4" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-k4"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-k4"><span class="ico lg-k lg-k4"><svg class="sym" aria-hidden="true"><use href="#s-k4"/></svg></span></template>
+<template id="mark-k5"><a class="mark lg-k lg-k5" href="#k5" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-k5"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-k5"><span class="ico lg-k lg-k5"><svg class="sym" aria-hidden="true"><use href="#s-k5"/></svg></span></template>
+<template id="mark-l1"><a class="mark lg-l lg-l1" href="#l1" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-l1"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-l1"><span class="ico lg-l lg-l1"><svg class="sym" aria-hidden="true"><use href="#s-l1"/></svg></span></template>
+<template id="mark-l2"><a class="mark lg-l lg-l2" href="#l2" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-l2"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-l2"><span class="ico lg-l lg-l2"><svg class="sym" aria-hidden="true"><use href="#s-l2"/></svg></span></template>
+<template id="mark-l3"><a class="mark lg-l lg-l3" href="#l3" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-l3"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-l3"><span class="ico lg-l lg-l3"><svg class="sym" aria-hidden="true"><use href="#s-l3"/></svg></span></template>
+<template id="mark-l4"><a class="mark lg-l lg-l4" href="#l4" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-l4"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-l4"><span class="ico lg-l lg-l4"><svg class="sym" aria-hidden="true"><use href="#s-l4"/></svg></span></template>
+<template id="mark-l5"><a class="mark lg-l lg-l5" href="#l5" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-l5"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-l5"><span class="ico lg-l lg-l5"><svg class="sym" aria-hidden="true"><use href="#s-l5"/></svg></span></template>
+<template id="mark-m1"><a class="mark lg-m lg-m1" href="#m1" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-m1"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-m1"><span class="ico lg-m lg-m1"><svg class="sym" aria-hidden="true"><use href="#s-m1"/></svg></span></template>
+<template id="mark-m2"><a class="mark lg-m lg-m2" href="#m2" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-m2"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-m2"><span class="ico lg-m lg-m2"><svg class="sym" aria-hidden="true"><use href="#s-m2"/></svg></span></template>
+<template id="mark-m3"><a class="mark lg-m lg-m3" href="#m3" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-m3"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-m3"><span class="ico lg-m lg-m3"><svg class="sym" aria-hidden="true"><use href="#s-m3"/></svg></span></template>
+<template id="mark-m4"><a class="mark lg-m lg-m4" href="#m4" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-m4"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-m4"><span class="ico lg-m lg-m4"><svg class="sym" aria-hidden="true"><use href="#s-m4"/></svg></span></template>
+<template id="mark-m5"><a class="mark lg-m lg-m5" href="#m5" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-m5"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-m5"><span class="ico lg-m lg-m5"><svg class="sym" aria-hidden="true"><use href="#s-m5"/></svg></span></template>
+<template id="mark-p1"><a class="mark lg-p lg-p1" href="#p1" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-p1"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-p1"><span class="ico lg-p lg-p1"><svg class="sym" aria-hidden="true"><use href="#s-p1"/></svg></span></template>
+<template id="mark-p2"><a class="mark lg-p lg-p2" href="#p2" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-p2"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-p2"><span class="ico lg-p lg-p2"><svg class="sym" aria-hidden="true"><use href="#s-p2"/></svg></span></template>
+<template id="mark-p3"><a class="mark lg-p lg-p3" href="#p3" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-p3"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-p3"><span class="ico lg-p lg-p3"><svg class="sym" aria-hidden="true"><use href="#s-p3"/></svg></span></template>
+<template id="mark-p4"><a class="mark lg-p lg-p4" href="#p4" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-p4"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-p4"><span class="ico lg-p lg-p4"><svg class="sym" aria-hidden="true"><use href="#s-p4"/></svg></span></template>
+<template id="mark-p5"><a class="mark lg-p lg-p5" href="#p5" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-p5"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-p5"><span class="ico lg-p lg-p5"><svg class="sym" aria-hidden="true"><use href="#s-p5"/></svg></span></template>
+<template id="mark-q1"><a class="mark lg-q lg-q1" href="#q1" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-q1"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-q1"><span class="ico lg-q lg-q1"><svg class="sym" aria-hidden="true"><use href="#s-q1"/></svg></span></template>
+<template id="mark-q2"><a class="mark lg-q lg-q2" href="#q2" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-q2"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-q2"><span class="ico lg-q lg-q2"><svg class="sym" aria-hidden="true"><use href="#s-q2"/></svg></span></template>
+<template id="mark-q3"><a class="mark lg-q lg-q3" href="#q3" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-q3"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-q3"><span class="ico lg-q lg-q3"><svg class="sym" aria-hidden="true"><use href="#s-q3"/></svg></span></template>
+<template id="mark-q4"><a class="mark lg-q lg-q4" href="#q4" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-q4"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-q4"><span class="ico lg-q lg-q4"><svg class="sym" aria-hidden="true"><use href="#s-q4"/></svg></span></template>
+<template id="mark-q5"><a class="mark lg-q lg-q5" href="#q5" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-q5"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-q5"><span class="ico lg-q lg-q5"><svg class="sym" aria-hidden="true"><use href="#s-q5"/></svg></span></template>
+<template id="mark-r1"><a class="mark lg-r lg-r1" href="#r1" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-r1"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-r1"><span class="ico lg-r lg-r1"><svg class="sym" aria-hidden="true"><use href="#s-r1"/></svg></span></template>
+<template id="mark-r2"><a class="mark lg-r lg-r2" href="#r2" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-r2"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-r2"><span class="ico lg-r lg-r2"><svg class="sym" aria-hidden="true"><use href="#s-r2"/></svg></span></template>
+<template id="mark-r3"><a class="mark lg-r lg-r3" href="#r3" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-r3"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-r3"><span class="ico lg-r lg-r3"><svg class="sym" aria-hidden="true"><use href="#s-r3"/></svg></span></template>
+<template id="mark-r4"><a class="mark lg-r lg-r4" href="#r4" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-r4"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-r4"><span class="ico lg-r lg-r4"><svg class="sym" aria-hidden="true"><use href="#s-r4"/></svg></span></template>
+<template id="mark-r5"><a class="mark lg-r lg-r5" href="#r5" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-r5"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-r5"><span class="ico lg-r lg-r5"><svg class="sym" aria-hidden="true"><use href="#s-r5"/></svg></span></template>
+<template id="mark-s1"><a class="mark lg-s lg-s1" href="#s1" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-s1"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-s1"><span class="ico lg-s lg-s1"><svg class="sym" aria-hidden="true"><use href="#s-s1"/></svg></span></template>
+<template id="mark-s2"><a class="mark lg-s lg-s2" href="#s2" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-s2"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-s2"><span class="ico lg-s lg-s2"><svg class="sym" aria-hidden="true"><use href="#s-s2"/></svg></span></template>
+<template id="mark-s3"><a class="mark lg-s lg-s3" href="#s3" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-s3"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-s3"><span class="ico lg-s lg-s3"><svg class="sym" aria-hidden="true"><use href="#s-s3"/></svg></span></template>
+<template id="mark-s4"><a class="mark lg-s lg-s4" href="#s4" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-s4"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-s4"><span class="ico lg-s lg-s4"><svg class="sym" aria-hidden="true"><use href="#s-s4"/></svg></span></template>
+<template id="mark-s5"><a class="mark lg-s lg-s5" href="#s5" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-s5"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-s5"><span class="ico lg-s lg-s5"><svg class="sym" aria-hidden="true"><use href="#s-s5"/></svg></span></template>
+<template id="mark-t1"><a class="mark lg-t lg-t1" href="#t1" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-t1"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-t1"><span class="ico lg-t lg-t1"><svg class="sym" aria-hidden="true"><use href="#s-t1"/></svg></span></template>
+<template id="mark-t2"><a class="mark lg-t lg-t2" href="#t2" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-t2"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-t2"><span class="ico lg-t lg-t2"><svg class="sym" aria-hidden="true"><use href="#s-t2"/></svg></span></template>
+<template id="mark-t3"><a class="mark lg-t lg-t3" href="#t3" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-t3"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-t3"><span class="ico lg-t lg-t3"><svg class="sym" aria-hidden="true"><use href="#s-t3"/></svg></span></template>
+<template id="mark-t4"><a class="mark lg-t lg-t4" href="#t4" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-t4"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-t4"><span class="ico lg-t lg-t4"><svg class="sym" aria-hidden="true"><use href="#s-t4"/></svg></span></template>
+<template id="mark-t5"><a class="mark lg-t lg-t5" href="#t5" aria-label="Nanolize"><svg class="sym" aria-hidden="true"><use href="#s-t5"/></svg><span class="wm">Nanolize</span></a></template>
+<template id="ico-t5"><span class="ico lg-t lg-t5"><svg class="sym" aria-hidden="true"><use href="#s-t5"/></svg></span></template>
 
 <!-- how each candidate is shown -->
 <template id="showing">
@@ -462,8 +752,65 @@ for (const sec of document.querySelectorAll('[data-cand]')) {
   }
 }
 
-/* the third batch: the unchanged mark and its five adjustments */
+/* the third, fourth and fifth batches: the unchanged mark first, then what was made of it */
 const VARIANTS = {
+  kv: [["k", "K", "原样", "J-2 的两半，绿色的一半是纸套，白色的一半是橡皮，底角擦圆。"],
+       ["k1", "K-1", "不带橡皮屑", "去掉旁边的三粒橡皮屑，只留擦圆的底角。最干净，和文字之间也不用多留空。"],
+       ["k2", "K-2", "纸套镶边", "纸套靠近橡皮的那一道边换成浅绿，像纸套上印的一圈色带。"],
+       ["k3", "K-3", "纸套更长", "纸套一直包到斜笔的尽头，只有右竖是露出来的橡皮。绿色占了三分之二。"],
+       ["k4", "K-4", "擦短了", "橡皮用得更久：右脚磨短了一截，够不到基线，橡皮屑落在它下面。"],
+       ["k5", "K-5", "纸套斜着裁", "纸套的边不是竖直的，向前倾 7 度，像手撕的纸套；取自 J-3 的斜切。"]],
+  lv: [["l", "L", "原样", "N 拆成两竖和一块斜放的橡皮，橡皮是两色的。"],
+       ["l1", "L-1", "三笔一样粗", "斜笔不加粗，和两竖一样宽。更像一个正常的 N，橡皮的感觉淡一些。"],
+       ["l2", "L-2", "纸套横着裹", "纸套和橡皮头的分界改成垂直于橡皮本身，像真的纸套那样横着裹一圈。"],
+       ["l3", "L-3", "三段", "在横着裹的纸套和橡皮头之间多一道白色的窄带，像纸套上的商标条。"],
+       ["l4", "L-4", "橡皮头磨圆", "橡皮头着地的那个角磨圆了，旁边落着橡皮屑：这块橡皮正在用。"],
+       ["l5", "L-5", "一整块橡皮", "橡皮两端也切成方的，四角是圆的，上下各伸出字高一点：一块完整的橡皮斜搁在两竖之间。"]],
+  mv: [["m", "M", "原样", "左竖和斜笔是两片刀刃，左上角有轴钉和两个指环，白色的右竖是正要剪的那一条。"],
+       ["m1", "M-1", "两片都削尖", "左竖的底端也斜着削尖，两片刀刃的尖都看得见，更像一把张开的剪刀；N 的左脚不再是平的。"],
+       ["m2", "M-2", "两片两色", "两片刀刃分成深绿和浅绿，各带自己的指环，看得出是两片叠在一起。"],
+       ["m3", "M-3", "剪的是虚线", "右竖换成四段短划，像包装上“沿此线剪开”的虚线。"],
+       ["m4", "M-4", "小指环", "指环缩小并贴到字顶上，高出字母的部分少了将近一半，在导航条里更稳。"],
+       ["m5", "M-5", "椭圆指环", "指环改成向外撇开的椭圆，是裁缝剪刀的样子。"]],
+  pv: [["p", "P", "原样", "N 的斜笔是一支铅笔，一头是橡皮，一头是笔尖。"],
+       ["p1", "P-1", "加一道金属箍", "橡皮和笔杆之间多一道白色的箍，铅笔的三段（橡皮、箍、笔杆）都齐了。"],
+       ["p2", "P-2", "笔杆带高光", "笔杆朝上的一面换成浅绿，像六棱铅笔受光的那一面。"],
+       ["p3", "P-3", "锯齿削口", "笔杆和木头的交界改成削铅笔留下的锯齿，是铅笔图标里最常见的画法。"],
+       ["p4", "P-4", "白笔杆", "颜色反过来：两竖是绿色，铅笔是白色的，木头浅绿，笔尖仍是绿色。"],
+       ["p5", "P-5", "两半各占一头", "回到 J-2 的两半：绿色一半的脚是橡皮，白色一半的头削成笔尖。一半擦，一半写。"]],
+  qv: [["q", "Q", "原样", "一枚尖角朝左的退格键，键面上是 N。"],
+       ["q1", "Q-1", "线框", "键只画轮廓，里面放 J-2 原样的两色 N。和主页现在的标志（方框里三条横线）是一路的。"],
+       ["q2", "Q-2", "白键绿字", "键是白色的，N 是绿色的。键像页面右上角那枚白色按钮，N 更醒目。"],
+       ["q3", "Q-3", "棱角", "键的圆角收到很小，尖角是真的尖，和 J-2 的平头是一个脾气。"],
+       ["q4", "Q-4", "有厚度的键帽", "键下面多一层深绿色的侧边，是一枚有厚度的键帽，像正要按下去。"],
+       ["q5", "Q-5", "只留尖角", "键的外框只留下左边那个尖角，后面是 J-2 原样的 N。尖角也是一个小于号：比 N 小。"]],
+  rv: [["r", "R", "原样", "N 沿斜笔分成绿白两半，中间用链牙咬合。"],
+       ["r1", "R-1", "不带拉头", "只留链牙，去掉左上角的拉头。轮廓就是一个干净的 N，不再有东西伸出去。"],
+       ["r2", "R-2", "大链牙", "链牙从九个减到五个，每个更大，缩到导航条的尺寸还数得清。"],
+       ["r3", "R-3", "尖牙", "方的链牙换成尖的，两半像锯齿一样咬在一起。"],
+       ["r4", "R-4", "拉到一半", "拉头停在斜笔中间：下面已经合上，上面还敞着一道口子。"],
+       ["r5", "R-5", "链牙单独上色", "链牙不再是两半伸出来的齿，而是夹在两半之间的一排浅绿色小块。"]],
+  sv: [["s", "S", "原样", "一条带子折两折成 N，两竖是正面，斜笔是翻过来的背面。"],
+       ["s1", "S-1", "白带绿面", "颜色对调：两竖是白色，斜笔是绿色。绿色只剩一笔，更醒目。"],
+       ["s2", "S-2", "不用渐变", "折痕处的阴影改成一块平的深色，没有渐变，和 J-2 的平涂是一个画法，小尺寸下也更实。"],
+       ["s3", "S-3", "全绿", "背面不用白色而用浅绿，整条带子是同一种材料的正反两面。"],
+       ["s4", "S-4", "折出斜角", "按真的折纸来画：折痕是斜的，所以 N 的左上角和右下角各缺一个小斜角，斜笔也和带子一样宽。"],
+       ["s5", "S-5", "细带子", "带子收窄到四分之三，同样折出斜角。更轻，更像一条丝带。"]],
+  tv: [["t", "T", "原样", "N 在斜笔上切开，左半是写下的代码，右半是一个绿色的对勾。"],
+       ["t1", "T-1", "对勾出头", "对勾的长笔向上伸出字高一截，像手写的对勾那样往上一挑。"],
+       ["t2", "T-2", "短钩", "切口往下挪，对勾的短笔更短，长短两笔的比例更接近常见的对勾。"],
+       ["t3", "T-3", "竖切口", "切口不垂直于斜笔，仍用 J-2 的竖缝，只是把颜色换成左白右绿。放在这里对照。"],
+       ["t4", "T-4", "圆头", "对勾的两个端点改成圆头，像用粗笔画出来的；左半仍是平头，一硬一软。"],
+       ["t5", "T-5", "左半只留轮廓", "左半只画轮廓，对勾是实心的：还没验收的是空的，验收过的才填上。"]],
+  k: [['j2', 'J-2', '原样', '平头的粗体 N 从中间竖着切开，左半绿色，右半白色。下面八个都从它出发。'],
+      ['k', 'K', 'N 形的橡皮', '改动最小的一个：绿色的一半是橡皮的纸套，白色的一半是露出来的橡皮，底角已经擦圆了，旁边落着几粒橡皮屑。缩小后和 J-2 几乎一样。'],
+      ['l', 'L', '斜笔是一块橡皮', 'N 拆成三块：两竖变细，中间的斜笔加粗成一块斜放的橡皮，深绿是纸套，浅绿是橡皮头。'],
+      ['m', 'M', '剪刀', '左竖和斜笔是剪刀的两片刀刃，在左上角用一颗轴钉铰在一起，上面是两个指环；白色的右竖是正要剪的那一条。'],
+      ['p', 'P', '铅笔', '斜笔是一支铅笔：上端是橡皮，下端是削好的笔尖，落在基线上。nanolize 不是删代码，而是擦掉重写，一支铅笔两头都有了。'],
+      ['q', 'Q', '退格键', '键盘上的退格键就是屏幕上的橡皮。把键面上的叉换成 N，整个标志是一枚实心的键，尖角朝左。'],
+      ['r', 'R', '拉链', '说到压缩，写代码的人想到的是 zip。N 沿斜笔分成两半，用一排链牙咬合在一起，左上角是拉头。'],
+      ['s', 'S', '对折', '一条带子折两折就是 N：绿色的两竖是正面，白色的斜笔是翻过来的背面，折痕处有阴影。对折，也就是一半。'],
+      ['t', 'T', '对勾', '把 J-2 的切口转成垂直于斜笔，右半就成了一个绿色的对勾：行为全部通过验收。左半是写下的代码。']],
   j: [['j', 'J', '原样', '笔画粗 4.2，两端是圆头，缝是竖直的，文字用 700 的字重。'],
       ['j1', 'J-1', '轻一档', '笔画从 4.2 减到 3.4，文字从 700 降到 600。整体轻了一档，和页面上的细线、衬线标题更合。'],
       ['j2', 'J-2', '平头', '笔画两端改成平的，转角只留很小的圆角。字形更硬朗，上下正好顶齐。'],
@@ -478,9 +825,10 @@ const VARIANTS = {
       ['d5', 'D-5', '带提示符', '前面加一个暗色的提示符，像一行刚输入完的命令，呼应页面里的终端。光标不变。']],
 };
 const stamp = (kind, id, size) => { const el = document.getElementById(kind + '-' + id).content.firstElementChild.cloneNode(true); if (size) el.classList.add(size); return el; };
-for (const grid of document.querySelectorAll('[data-variants]')) for (const [id, tag, name, note] of VARIANTS[grid.dataset.variants]) {
-  const card = document.createElement('article'); card.className = 'v' + (id.length === 1 ? ' base' : ''); card.id = id.length === 1 ? '' : id;
+for (const grid of document.querySelectorAll('[data-variants]')) for (const [n, [id, tag, name, note]] of VARIANTS[grid.dataset.variants].entries()) {
+  const card = document.createElement('article'); card.className = 'v' + (n ? '' : ' base'); card.id = n ? id : '';   // the first of each list is the unchanged mark
   card.innerHTML = `<header><b>${tag}</b><h3>${name}</h3><p>${note}</p></header><div class="big"></div><div class="at"><div class="dk"></div><div class="on-light"></div></div>`;
+  if (grid.classList.contains('tall')) card.querySelector('.big').append(stamp('ico', id, 'i96'));
   card.querySelector('.big').append(stamp('mark', id));
   card.querySelector('.dk').append(stamp('ico', id, 'i16'), stamp('ico', id, 'i32'), stamp('mark', id, 'small'));
   card.querySelector('.on-light').append(stamp('mark', id));
